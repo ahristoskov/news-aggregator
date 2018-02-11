@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import Widget from  './Widget.js';
 import Weather from './Weather.js';
 import News from './News.js';
+import Facebook from './Facebook.js';
 import './App.css';
-
 
 class App extends React.Component {
   render(){
@@ -13,6 +13,7 @@ class App extends React.Component {
         <div className="small-square">
           <Widget value={'Facebook'} /> 
           <hr />
+          <Facebook />
         </div>   
 
         <div className="small-square">

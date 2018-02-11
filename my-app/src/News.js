@@ -21,7 +21,7 @@ export default class News extends React.Component{
       })        
     )
     .catch(err => console.error(this.props.url, err.toString())) 
-  }
+  } 
 
   componentDidMount(){  
     this.refreshWidget();                         
@@ -42,7 +42,7 @@ export default class News extends React.Component{
         <p><a href={item.url}>Link</a> </p>
         <p>{item.publishedAt} </p>
       </div>);                                                                            
-    elements.push(<button type="button" class="btn" onClick={this.refreshWidget}>Refresh</button>)
+    elements.push(<button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>)
     return(elements) 
   }  
 
