@@ -12,14 +12,17 @@ class App extends React.Component {
       <div className="square">    
         <div className="small-square">
           <Widget value={'Facebook'} /> 
+          <hr />
         </div>   
 
         <div className="small-square">
           <Widget value={'Twitter'} /> 
+          <hr />
         </div>
 
         <div className="small-square">
           <Widget value={'Weather'} />          
+          <hr />
           <Weather />
           <p id="timeOfDay"></p>       
         </div>
@@ -28,7 +31,8 @@ class App extends React.Component {
           <Widget value={'News'} />
           <hr />
           <News newsSource={'bbc-news'} />
-          <News newsSource={'reddit-r-all'} />
+          <hr />
+          <News newsSource={'reddit-r-all'} />          
         </div>
       </div>
     )
