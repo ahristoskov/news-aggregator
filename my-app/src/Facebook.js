@@ -11,12 +11,12 @@ export default class Facebook extends React.Component{
   }
   
   refreshWidget(){
-    fetch('https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story&access_token=EAACEdEose0cBAGW2ZBW0t3ZAhkdYQk5RZAAS2rKZCgVgimsFHtHTn2mGPT87d2Hm1hHevpgc6G5ZBRIjZBgxC9S9BWhKU5iIudieofUndWH9jiSMlo2ZC9tM72o5QevbgZCVWcg32YpLNBVNPrXcnrahiZAQxu6YfsqUj9jULJH9tZCVN9eZCZB6mQxzZBqEX2K7eyZA4ZD')
-    .then((response) => 
+    fetch('https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story&access_token=EAACEdEose0cBAHPaMUFh7Mmxkvb4nLVZA31iOVPBVZCfbHDVHZAhZB9nidx4ZBDNWV81yYbTYQNz1HWy7fKkjQRpb0fyVm2vbY8cJBfWhYoLpayKDWaJqKT7FrNqCuJZAGZBZBRmF6JXxaYqmJlswAnFOZBLwWhPxO1uZBEfDG0HH2WPlH6O5eUgOkSE8iFTPY25oZD')
+    .then(response => 
       {        
         return response.json();
       })
-    .then((result) =>       
+    .then(result =>        
       this.setState({
         data : result.data
       })        

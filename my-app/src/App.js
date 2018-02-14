@@ -4,6 +4,7 @@ import Widget from  './Widget.js';
 import Weather from './Weather.js';
 import News from './News.js';
 import Facebook from './Facebook.js';
+import CryptoExchange from './Exchanges/CryptoExchange';
 import './App.css';
 
 class App extends React.Component {
@@ -15,10 +16,16 @@ class App extends React.Component {
           <hr />
           <Facebook />
         </div>   
-
+        
         <div className="small-square">
           <Widget value={'Twitter'} /> 
           <hr />
+        </div>
+
+        <div className="small-square">
+          <Widget value={'CryptoExchange'} /> 
+          <hr />
+          <CryptoExchange />
         </div>
 
         <div className="small-square">
