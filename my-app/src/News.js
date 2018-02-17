@@ -34,22 +34,23 @@ export default class News extends React.Component{
   render(){  
     let elements = [];
   
-    elements = this.state.data.map((item) => 
+    elements = this.state.data.map((item, index) => 
     <div className="col-sm">
       <div className="card">
         <div className="card-body">            
         <div class="card-header">
           <h5 className="card-title">{item.author}</h5>
           </div>
-            <img class="card-img-top" src={item.urlToImage} alt="Card image cap"/>
+            <img class="card-img-top" src={item.urlToImage} alt={item.title} />
             <p>
-              <a href={item.url} target="_blank">{item.title}</a> <br/>
-              {item.description} <br />
+              <a href={item.url} target="_blank" title={item.title}>{index+1}. {item.title}</a> <br/>
+              {item.description} <br/>
               {item.publishedAt} <br/>
           </p>
         </div>
       </div>     
-    </div>);                                                                          
+    </div>    
+    );                                                                          
     // elements.push(<button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>)
     elements.push(<div class="w-100">&nbsp;</div>)    
     return(elements) 
