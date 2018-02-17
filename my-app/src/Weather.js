@@ -38,12 +38,17 @@ export default class Weather extends React.Component{
    
     render(){                   
       return(
-        <div className="col-4">
-          <p>City - {this.state.city}</p>
-          <p>Weather - {this.state.weather} </p>
-          <p>Temp - {this.state.temp} C&deg; </p>
-          <p id="timeOfDay"></p>      
-          <button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>
+        <div className="row"> 
+          <div className="col-12">  
+            <h1> Weather </h1>                                        
+          </div>                       
+          <div className="col-4">
+            <p>City - {this.state.city}</p>
+            <p>Weather - {this.state.weather} </p>
+            <p>Temp - {this.state.temp} C&deg; </p>
+            <p id="timeOfDay"></p>      
+            <button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>
+          </div>
         </div>
       )
     }

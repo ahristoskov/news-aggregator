@@ -1,12 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Link } from 'react-router-dom'
-import Widget from  './Widget.js';
-import Weather from './Weather.js';
-import News from './News.js';
-import Facebook from './Facebook.js';
-import CryptoExchange from './Exchanges/CryptoExchange';
+import { Link } from 'react-router-dom';
 import './App.css';
+import Main from './Router';
 
 class App extends React.Component {
   render(){
@@ -23,7 +19,10 @@ class App extends React.Component {
               <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                   <li className="nav-item active">
-                    <Link className="nav-link" to="/news">News</Link>
+                    <Link className="nav-link" to="/news/bbc-news">BBC News</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/news/reddit-r-all">Reddit</Link>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link" to="/facebook">Facebook</Link>
@@ -39,34 +38,9 @@ class App extends React.Component {
             </nav>
           </div>
           <div className="w-100 margin-top-20"></div>
-          <div className="row">
-            <div className="col-12">
-              <h2> News </h2>                                    
-            </div>
-            <News newsSource={'bbc-news'} />            
-            <News newsSource={'reddit-r-all'} />          
-          </div>
-          
-          <Facebook />
-            
-          
-          {/* <div className="col-4">
-            <Widget value={'Twitter'} />             
-          </div> */}
 
-          <div className="row">       
-            <div className="col-12">
-              <h2> Exchanges </h2>                            
-            </div>
-            <CryptoExchange />
-          </div>
-
-          <div className="row"> 
-            <div className="col-12">  
-              <h1> Weather </h1>                                        
-            </div>
-            <Weather />           
-          </div>
+          <Main />
+        
       </div>
     )
  }

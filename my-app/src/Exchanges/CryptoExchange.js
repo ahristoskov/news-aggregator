@@ -43,22 +43,27 @@ export default class CryptoExchange extends React.Component{
  
   render(){      
     return(
-      <div className="d-flex flex-column">
-        <div className="p-2">From Currency Code - {this.state.data["1. From_Currency Code"]}</div>   
-        <div className="p-2">From Currency Name - {this.state.data["2. From_Currency Name"]}</div>   
-        <div className="p-2">To Currency Code - {this.state.data["3. To_Currency Code"]}</div>   
-        <div className="p-2">Exchange Rate - {Math.floor(this.state.data["5. Exchange Rate"])}</div>   
-        <div className="p-2">Last Refreshed - {this.state.data["6. Last Refreshed"]}</div>              
-        <div className="p-2">
-          <select className="custom-select" onChange={this.change}>
-            <option value="BTC"> BTC </option>
-            <option value="ETH"> ETH </option>
-            <option value="XRP"> XRP </option>
-            <option value="ADA"> ADA </option>
-            <option value="BCH"> BCH </option>
-          </select>
-        </div>      
-      </div>                                                                          
+      <div className="row">       
+        <div className="col-12">
+          <h2> Exchanges </h2>                            
+        </div>
+        <div className="col-md">
+          <div className="col">From Currency Code - {this.state.data["1. From_Currency Code"]}</div>   
+          <div className="col">From Currency Name - {this.state.data["2. From_Currency Name"]}</div>   
+          <div className="col">To Currency Code - {this.state.data["3. To_Currency Code"]}</div>   
+          <div className="col">Exchange Rate - {Math.floor(this.state.data["5. Exchange Rate"])}</div>   
+          <div className="col">Last Refreshed - {this.state.data["6. Last Refreshed"]}</div>              
+          <div className="col-3">
+            <select className="custom-select" onChange={this.change}>
+              <option value="BTC"> BTC </option>
+              <option value="ETH"> ETH </option>
+              <option value="XRP"> XRP </option>
+              <option value="ADA"> ADA </option>
+              <option value="BCH"> BCH </option>
+            </select>
+          </div>      
+        </div>   
+      </div>                                                                       
     )
   }  
 

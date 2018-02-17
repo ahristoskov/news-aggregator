@@ -13,7 +13,7 @@ export default class Facebook extends React.Component{
   refreshWidget(url){    
  
     if(url === ''){
-      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message,picture&access_token=EAAV189Eh8WUBAH2K8LYlDIdDPLnGncSXiadi3WOZB49Vsges1V8DssEXal4Y1bMiZAzjknqqixQd8VHacydB2FGB6qm1R7iZCXB3GCSOKOy3Q8cKOslOierkC8y31RTZCZBPioAmHdUBLCd7XS8109Q1VHZCVtVJh289YkFSl5PxELhf5HZCqj4gPpcVcVXZASsZD';
+      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message,picture&access_token=EAACEdEose0cBAObZB0Dca10vBRoSahVCXkvzQFsJZCBkO4NRDxX1TMkatuQ5vfZAHsbbgTQLb6JU4UNLjVkziaKwTQ0rzccELRn4qVOZAcSeCui6vXqSuZAa79A7tz2Bb0ZBbInt4VrmxNDUYIGrZAbBeBYmP6sbZCpi06Vl0p5putHShfrLHMjOP3jsojEpys4iWonWgFdZAPwZDZD';
     }
     
     fetch(url)
@@ -39,24 +39,30 @@ export default class Facebook extends React.Component{
 
   render(){    
     let elements = [];
-    this.state.data.forEach((item, index) => {       
-    elements.push(<div className="col-sm">
+    let list = 0;
+
+    this.state.data.forEach((item, index) => {   
+      list++;    
+      elements.push(<div className="col-sm">
           <div className="card">
             <div className="card-body"> 
-            {typeof item.story != 'undefined' ?            
-              <div class="card-header">
-                <h5 className="card-title">{item.story}</h5>
-              </div> : ""}            
-                <img className="card-img-top" src={item.picture} alt="Card image cap"/>
+              {typeof item.story != 'undefined' ?            
+                <div class="card-header">
+                  <h5 className="card-title">{item.story}</h5>
+                </div> : ""}
+                <a href={item.link} target="_blank">            
+                  <img className="card-img-top" src={item.picture} alt="Card image cap"/>
+                </a>
                 <p className="card-text">
                   {item.message}
                   <a href={item.link} target="_blank">{item.name}</a>
               </p>
             </div>
           </div>                     
-    </div>)      
-    if(index > 0 && index % 3 === 0){
-        elements.push(<div class="w-100 margin-top-10"></div>);
+      </div>)      
+      if(list === 4){
+          elements.push(<div class="w-100 margin-top-10"></div>);
+          list = 0;   
       }
     });
     
