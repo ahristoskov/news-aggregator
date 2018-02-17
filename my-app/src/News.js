@@ -39,7 +39,7 @@ export default class News extends React.Component{
         <p>{item.author}</p>
         <p>{item.title}</p>
         <p>{item.description} </p>
-        <p><a href={item.url}>Link</a> </p>
+        <p><a href={item.url} target="_blank">Link</a> </p>
         <p>{item.publishedAt} </p>
       </div>);                                                                            
     elements.push(<button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>)

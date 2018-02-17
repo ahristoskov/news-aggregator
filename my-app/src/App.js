@@ -12,30 +12,34 @@ class App extends React.Component {
     return (
       <div className="square">    
         <div className="small-square">
+          <hr />
           <Widget value={'Facebook'} /> 
           <hr />
           <Facebook />
         </div>   
         
         <div className="small-square">
+          <hr />
           <Widget value={'Twitter'} /> 
           <hr />
         </div>
 
         <div className="small-square">
+          <hr />
           <Widget value={'CryptoExchange'} /> 
           <hr />
           <CryptoExchange />
         </div>
 
         <div className="small-square">
+          <hr />
           <Widget value={'Weather'} />          
           <hr />
-          <Weather />
-          <p id="timeOfDay"></p>       
+          <Weather />           
         </div>
 
         <div className="small-square">
+          <hr />
           <Widget value={'News'} />
           <hr />
           <News newsSource={'bbc-news'} />

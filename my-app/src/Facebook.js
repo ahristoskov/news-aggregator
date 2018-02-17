@@ -6,42 +6,51 @@ export default class Facebook extends React.Component{
   constructor(props){
     super(props);        
 
-    this.state = { data: []};
+    this.state = { data: [], paging: ''};
     this.refreshWidget = this.refreshWidget.bind(this);     
   }
   
-  refreshWidget(){
-    fetch('https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story&access_token=EAACEdEose0cBAHPaMUFh7Mmxkvb4nLVZA31iOVPBVZCfbHDVHZAhZB9nidx4ZBDNWV81yYbTYQNz1HWy7fKkjQRpb0fyVm2vbY8cJBfWhYoLpayKDWaJqKT7FrNqCuJZAGZBZBRmF6JXxaYqmJlswAnFOZBLwWhPxO1uZBEfDG0HH2WPlH6O5eUgOkSE8iFTPY25oZD')
-    .then(response => 
+  refreshWidget(url){    
+ 
+    if(url === ''){
+      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message&access_token=EAAV189Eh8WUBAOD1oa5pWVsNfmdzC3n0lFoKMMNfHaBtwyoKY1Lc51QJZAIuQYQau6T5MWlCfzHtYRZABeSDsTjtKYNMH6NYO2n6ZCsqOsQATm8TaNb6eyD0PnTqQAZAG5scAJ6xRS9We270lkFTkQCzpZC0zIpjYCZBUTfg7r4QZAMdW9q7d2MrVaVJCElYNsZD';
+    }
+    
+    fetch(url)
+    .then((response) => 
       {        
         return response.json();
       })
-    .then(result =>        
+    .then((result) => {            
       this.setState({
-        data : result.data
+        data : result.data,
+        paging : result.paging
       })        
-    )
+    })
     .catch(err => console.error(this.props.url, err.toString())) 
+    
   } 
 
   componentDidMount(){  
-    this.refreshWidget();                         
+    this.refreshWidget('');                         
   } 
     
-  componentWillUnmount() {
+  componentWillUnmount() {}
 
-  }
- 
-  render(){  
-    let elements = [];
-  
-    elements = this.state.data.map((item) => 
-      <div className="widget-content">
+  render(){
+    let elements = [];    
+    elements = this.state.data.map((item) =>       
+      <div className="d.flex">
         <p>{item.story}</p>   
+        <p>{item.message}</p>
         <p><a href={item.link} target="_blank">{item.name}</a></p>     
-      </div>);                                                                            
-    elements.push(<button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>)
-    return(elements) 
+      </div>);
+    elements.push(<button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.previous)}> Previous </button>);                                                              
+    elements.push(<button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.next)}>Next</button>);
+    elements.push(<br/>);                                                                            
+    elements.push(<button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>);
+    return elements;
   }  
+
 
 }

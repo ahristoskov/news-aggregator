@@ -42,6 +42,7 @@ export default class Weather extends React.Component{
           <p>City - {this.state.city}</p>
           <p>Weather - {this.state.weather} </p>
           <p>Temp - {this.state.temp} C&deg; </p>
+          <p id="timeOfDay"></p>      
           <button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>
         </div>
       )

@@ -7,11 +7,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 function updateTime(){
     const time = (<span> {new Date().toTimeString()} </span>);
+    ReactDOM.render(<App />, document.getElementById('root'));
     ReactDOM.render(
       time,
       document.getElementById('timeOfDay')
-    );
-    ReactDOM.render(<App />, document.getElementById('root'));
+    );    
   }
   
   setInterval(updateTime, 600000);
