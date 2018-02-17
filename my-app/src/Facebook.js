@@ -13,7 +13,7 @@ export default class Facebook extends React.Component{
   refreshWidget(url){    
  
     if(url === ''){
-      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message,picture&access_token=EAAV189Eh8WUBAOD1oa5pWVsNfmdzC3n0lFoKMMNfHaBtwyoKY1Lc51QJZAIuQYQau6T5MWlCfzHtYRZABeSDsTjtKYNMH6NYO2n6ZCsqOsQATm8TaNb6eyD0PnTqQAZAG5scAJ6xRS9We270lkFTkQCzpZC0zIpjYCZBUTfg7r4QZAMdW9q7d2MrVaVJCElYNsZD';
+      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message,picture&access_token=EAAV189Eh8WUBAHr3rg6AXv0fKU6jyCvTAPJu3ZCms8y22mcub2nJapVgrvGUZCps3dGGqZCZC64bZC7oZCafeSZCl9QTzpKQuF3EyKy68pMqEgDi6L4nAGtIJXMCHhsYVvOLwhcdkTpYr5HpgUFpufH3YOF93lmOsebF2anznMOc5pWvM89dc4JZCAmBQGd4CmT5hHgJaGePrgZDZD';
     }
     
     fetch(url)
@@ -39,8 +39,9 @@ export default class Facebook extends React.Component{
 
   render(){
     let elements = [];    
-    elements = this.state.data.map((item, index) =>       
-      <div className="col-sm">
+
+    this.state.data.forEach((item, index) => {       
+    elements.push(<div className="col-sm">
         <div className="card">
           <div className="card-body">            
             <div class="card-header">
@@ -53,14 +54,16 @@ export default class Facebook extends React.Component{
             </p>
           </div>
         </div>                     
-      </div>             
-    );
+      </div>)
+    if(index > 0 && index % 3 === 0){
+      elements.push(<div class="w-100 margin-top-10"></div>);    
+    }
+  });
     elements.push(<button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.previous)}> Previous </button>);                                               
     elements.push(<button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.next)}>Next</button>);
     elements.push(<br/>);                                                                            
     elements.push(<button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>);
+    elements.push(<div class="w-100 margin-top-10"></div>);    
     return elements;
   }  
-
-
 }

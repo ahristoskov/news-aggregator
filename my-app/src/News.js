@@ -33,8 +33,10 @@ export default class News extends React.Component{
  
   render(){  
     let elements = [];
-  
+    let list = 0;
+
     this.state.data.forEach((item, index) => {
+    list++;
     elements.push(<div className="col-sm">
       <div className="card">
         <div className="card-body">            
@@ -50,8 +52,9 @@ export default class News extends React.Component{
         </div>
       </div>      
     </div>)              
-    if(index === 3){
-      elements.push(<div class="w-100 margin-top-10"></div>);    
+    if(list === 4){
+      elements.push(<div class="w-100 margin-top-10"></div>); 
+      list = 0;   
     }
   });                                                                       
     elements.push(<div class="w-100 margin-top-10"></div>); 
