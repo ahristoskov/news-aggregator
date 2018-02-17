@@ -72,11 +72,13 @@ export default class Facebook extends React.Component{
           <h2> Facebook </h2>                       
         </div>     
       {elements}
-      <button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.previous)}> Previous </button>                                               
-      <button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.next)}>Next</button>
-      <br/>                                                                
-      <button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>
-      <div class="w-100 margin-top-10"></div>
+        <div className="col-1">
+          <button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.previous)}> Previous </button>                                               
+        </div>
+        <div className="col-1">
+          <button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.next)}>Next</button>
+        </div>
+        <div class="w-100 margin-top-10"></div>
       </div> 
     )        
   }  
