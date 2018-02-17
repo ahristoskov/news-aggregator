@@ -35,10 +35,12 @@ export default class News extends React.Component{
     let elements = [];
   
     elements = this.state.data.map((item) => 
-    <div className="col-4">
+    <div className="col-sm">
       <div className="card">
         <div className="card-body">            
-            <h5 className="card-title">{item.author}</h5>
+        <div class="card-header">
+          <h5 className="card-title">{item.author}</h5>
+          </div>
             <img class="card-img-top" src={item.urlToImage} alt="Card image cap"/>
             <p>
               <a href={item.url} target="_blank">{item.title}</a> <br/>

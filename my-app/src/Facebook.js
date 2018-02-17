@@ -13,7 +13,7 @@ export default class Facebook extends React.Component{
   refreshWidget(url){    
  
     if(url === ''){
-      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message&access_token=EAAV189Eh8WUBAOD1oa5pWVsNfmdzC3n0lFoKMMNfHaBtwyoKY1Lc51QJZAIuQYQau6T5MWlCfzHtYRZABeSDsTjtKYNMH6NYO2n6ZCsqOsQATm8TaNb6eyD0PnTqQAZAG5scAJ6xRS9We270lkFTkQCzpZC0zIpjYCZBUTfg7r4QZAMdW9q7d2MrVaVJCElYNsZD';
+      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message,picture&access_token=EAAV189Eh8WUBAOD1oa5pWVsNfmdzC3n0lFoKMMNfHaBtwyoKY1Lc51QJZAIuQYQau6T5MWlCfzHtYRZABeSDsTjtKYNMH6NYO2n6ZCsqOsQATm8TaNb6eyD0PnTqQAZAG5scAJ6xRS9We270lkFTkQCzpZC0zIpjYCZBUTfg7r4QZAMdW9q7d2MrVaVJCElYNsZD';
     }
     
     fetch(url)
@@ -44,6 +44,7 @@ export default class Facebook extends React.Component{
         <div className="card">
           <div className="card-body">            
               <h5 className="card-title">{item.story}</h5>
+              <img class="card-img-top" src={item.picture} alt="Card image cap"/>
               <p>
                 {item.message}
                 <a href={item.link} target="_blank">{item.name}</a>
