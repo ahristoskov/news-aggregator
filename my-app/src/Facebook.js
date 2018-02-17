@@ -43,12 +43,13 @@ export default class Facebook extends React.Component{
     this.state.data.forEach((item, index) => {       
     elements.push(<div className="col-sm">
         <div className="card">
-          <div className="card-body">            
+          <div className="card-body"> 
+          {typeof item.story != 'undefined' ?            
             <div class="card-header">
               <h5 className="card-title">{item.story}</h5>
-            </div>
-              <img class="card-img-top" src={item.picture} alt="Card image cap"/>
-              <p>
+            </div> : ""}            
+              <img className="card-img-top" src={item.picture} alt="Card image cap"/>
+              <p className="card-text">
                 {item.message}
                 <a href={item.link} target="_blank">{item.name}</a>
             </p>
