@@ -10,42 +10,31 @@ import './App.css';
 class App extends React.Component {
   render(){
     return (
-      <div className="square">    
-        <div className="small-square">
-          <hr />
-          <Widget value={'Facebook'} /> 
-          <hr />
-          <Facebook />
-        </div>   
-        
-        <div className="small-square">
-          <hr />
-          <Widget value={'Twitter'} /> 
-          <hr />
-        </div>
+      <div className="container">   
+          <div className="row">            
+            <Widget value={'News'} />            
+            <News newsSource={'bbc-news'} />            
+            <News newsSource={'reddit-r-all'} />          
+          </div>
 
-        <div className="small-square">
-          <hr />
-          <Widget value={'CryptoExchange'} /> 
-          <hr />
-          <CryptoExchange />
-        </div>
+          <div className="row">            
+            <Widget value={'Facebook'} />             
+            <Facebook />
+          </div>   
+          
+          {/* <div className="col-4">
+            <Widget value={'Twitter'} />             
+          </div> */}
 
-        <div className="small-square">
-          <hr />
-          <Widget value={'Weather'} />          
-          <hr />
-          <Weather />           
-        </div>
+          <div className="row">            
+            <Widget value={'CryptoExchange'} />             
+            <CryptoExchange />
+          </div>
 
-        <div className="small-square">
-          <hr />
-          <Widget value={'News'} />
-          <hr />
-          <News newsSource={'bbc-news'} />
-          <hr />
-          <News newsSource={'reddit-r-all'} />          
-        </div>
+          <div className="row">            
+            <Widget value={'Weather'} />                      
+            <Weather />           
+          </div>
       </div>
     )
  }

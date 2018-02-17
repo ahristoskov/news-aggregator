@@ -35,14 +35,21 @@ export default class News extends React.Component{
     let elements = [];
   
     elements = this.state.data.map((item) => 
-      <div className="widget-content">
-        <p>{item.author}</p>
-        <p>{item.title}</p>
-        <p>{item.description} </p>
-        <p><a href={item.url} target="_blank">Link</a> </p>
-        <p>{item.publishedAt} </p>
-      </div>);                                                                            
-    elements.push(<button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>)
+    <div className="col-4">
+      <div className="card">
+        <div className="card-body">            
+            <h5 className="card-title">{item.author}</h5>
+            <img class="card-img-top" src={item.urlToImage} alt="Card image cap"/>
+            <p>
+              <a href={item.url} target="_blank">{item.title}</a> <br/>
+              {item.description} <br />
+              {item.publishedAt} <br/>
+          </p>
+        </div>
+      </div>     
+    </div>);                                                                          
+    // elements.push(<button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>)
+    elements.push(<div class="w-100">&nbsp;</div>)    
     return(elements) 
   }  
 

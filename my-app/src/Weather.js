@@ -38,7 +38,7 @@ export default class Weather extends React.Component{
    
     render(){                   
       return(
-        <div className="widget-content">
+        <div className="col-4">
           <p>City - {this.state.city}</p>
           <p>Weather - {this.state.weather} </p>
           <p>Temp - {this.state.temp} C&deg; </p>

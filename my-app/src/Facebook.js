@@ -40,10 +40,16 @@ export default class Facebook extends React.Component{
   render(){
     let elements = [];    
     elements = this.state.data.map((item) =>       
-      <div className="d.flex">
-        <p>{item.story}</p>   
-        <p>{item.message}</p>
-        <p><a href={item.link} target="_blank">{item.name}</a></p>     
+      <div className="col-4">
+        <div className="card">
+          <div className="card-body">            
+              <h5 className="card-title">{item.story}</h5>
+              <p>
+                {item.message}
+                <a href={item.link} target="_blank">{item.name}</a>
+            </p>
+          </div>
+        </div>     
       </div>);
     elements.push(<button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.previous)}> Previous </button>);                                                              
     elements.push(<button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.next)}>Next</button>);
