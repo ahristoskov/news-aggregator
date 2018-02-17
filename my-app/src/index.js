@@ -14,7 +14,7 @@ function updateTime(){
     );    
   }
   
-  setInterval(updateTime, 600000);
+  setInterval(updateTime, 60000);
 
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();

@@ -34,8 +34,8 @@ export default class News extends React.Component{
   render(){  
     let elements = [];
   
-    elements = this.state.data.map((item, index) => 
-    <div className="col-sm">
+    this.state.data.forEach((item, index) => {
+    elements.push(<div className="col-sm">
       <div className="card">
         <div className="card-body">            
         <div class="card-header">
@@ -48,11 +48,13 @@ export default class News extends React.Component{
               {item.publishedAt} <br/>
           </p>
         </div>
-      </div>     
-    </div>    
-    );                                                                          
-    // elements.push(<button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>)
-    elements.push(<div class="w-100">&nbsp;</div>)    
+      </div>      
+    </div>)              
+    if(index === 3){
+      elements.push(<div class="w-100 margin-top-10"></div>);    
+    }
+  });                                                                       
+    elements.push(<div class="w-100 margin-top-10"></div>); 
     return(elements) 
   }  
 
