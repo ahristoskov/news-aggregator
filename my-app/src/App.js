@@ -14,9 +14,9 @@ class App extends React.Component {
       <div className="container">   
         <div className="row">            
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-              <a className="navbar-brand" href="/">
+              <Link className="navbar-brand" to="/">
                 <img src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="" />
-              </a>
+              </Link>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
               </button>
@@ -26,13 +26,13 @@ class App extends React.Component {
                     <Link className="nav-link" to="/news">News</Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#/facebook">Facebook</a>
+                    <Link className="nav-link" to="/facebook">Facebook</Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#/exchanges">Exchanges</a>
+                    <Link className="nav-link" to="/exchanges">Exchanges</Link>
                   </li>
                   <li className="nav-item">
-                    <a className="nav-link" href="#/weather">Weather</a>
+                    <Link className="nav-link" to="/weather">Weather</Link>
                   </li>
                 </ul>
               </div>
@@ -46,13 +46,9 @@ class App extends React.Component {
             <News newsSource={'bbc-news'} />            
             <News newsSource={'reddit-r-all'} />          
           </div>
-
-          <div className="row"> 
-            <div className="col-12">
-              <h2> Facebook </h2>                       
-            </div>
-            <Facebook />
-          </div>   
+          
+          <Facebook />
+            
           
           {/* <div className="col-4">
             <Widget value={'Twitter'} />             

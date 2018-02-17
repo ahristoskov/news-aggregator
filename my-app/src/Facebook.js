@@ -13,7 +13,7 @@ export default class Facebook extends React.Component{
   refreshWidget(url){    
  
     if(url === ''){
-      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message,picture&access_token=EAAV189Eh8WUBAHr3rg6AXv0fKU6jyCvTAPJu3ZCms8y22mcub2nJapVgrvGUZCps3dGGqZCZC64bZC7oZCafeSZCl9QTzpKQuF3EyKy68pMqEgDi6L4nAGtIJXMCHhsYVvOLwhcdkTpYr5HpgUFpufH3YOF93lmOsebF2anznMOc5pWvM89dc4JZCAmBQGd4CmT5hHgJaGePrgZDZD';
+      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message,picture&access_token=EAAV189Eh8WUBAH2K8LYlDIdDPLnGncSXiadi3WOZB49Vsges1V8DssEXal4Y1bMiZAzjknqqixQd8VHacydB2FGB6qm1R7iZCXB3GCSOKOy3Q8cKOslOierkC8y31RTZCZBPioAmHdUBLCd7XS8109Q1VHZCVtVJh289YkFSl5PxELhf5HZCqj4gPpcVcVXZASsZD';
     }
     
     fetch(url)
@@ -37,34 +37,41 @@ export default class Facebook extends React.Component{
     
   componentWillUnmount() {}
 
-  render(){
-    let elements = [];    
-
+  render(){    
+    let elements = [];
     this.state.data.forEach((item, index) => {       
     elements.push(<div className="col-sm">
-        <div className="card">
-          <div className="card-body"> 
-          {typeof item.story != 'undefined' ?            
-            <div class="card-header">
-              <h5 className="card-title">{item.story}</h5>
-            </div> : ""}            
-              <img className="card-img-top" src={item.picture} alt="Card image cap"/>
-              <p className="card-text">
-                {item.message}
-                <a href={item.link} target="_blank">{item.name}</a>
-            </p>
-          </div>
-        </div>                     
-      </div>)
+          <div className="card">
+            <div className="card-body"> 
+            {typeof item.story != 'undefined' ?            
+              <div class="card-header">
+                <h5 className="card-title">{item.story}</h5>
+              </div> : ""}            
+                <img className="card-img-top" src={item.picture} alt="Card image cap"/>
+                <p className="card-text">
+                  {item.message}
+                  <a href={item.link} target="_blank">{item.name}</a>
+              </p>
+            </div>
+          </div>                     
+    </div>)      
     if(index > 0 && index % 3 === 0){
-      elements.push(<div class="w-100 margin-top-10"></div>);    
-    }
-  });
-    elements.push(<button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.previous)}> Previous </button>);                                               
-    elements.push(<button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.next)}>Next</button>);
-    elements.push(<br/>);                                                                            
-    elements.push(<button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>);
-    elements.push(<div class="w-100 margin-top-10"></div>);    
-    return elements;
+        elements.push(<div class="w-100 margin-top-10"></div>);
+      }
+    });
+    
+    return(       
+      <div className="row">    
+        <div className="col-12">
+          <h2> Facebook </h2>                       
+        </div>     
+      {elements}
+      <button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.previous)}> Previous </button>                                               
+      <button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.next)}>Next</button>
+      <br/>                                                                
+      <button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>
+      <div class="w-100 margin-top-10"></div>
+      </div> 
+    )        
   }  
 }

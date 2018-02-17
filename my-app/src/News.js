@@ -43,7 +43,9 @@ export default class News extends React.Component{
           <div class="card-header">
             <h5 className="card-title">{item.author}</h5>
           </div>
-          <img className="card-img-top" src={item.urlToImage} alt={item.title} />
+          <a href={item.url} target="_blank" title={item.title}>
+            <img className="card-img-top" src={item.urlToImage} alt={item.title} />
+          </a>            
           <p className="card-text">
             <a href={item.url} target="_blank" title={item.title}>{index+1}. {item.title}</a> <br/>
             {item.description} <br/>
