@@ -7,8 +7,7 @@ class App extends React.Component {
   render(){
     return (
       <div className="container">   
-        <div className="row">            
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content">
               <Link className="navbar-brand" to="/">
                 <img src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="" />
               </Link>
@@ -35,7 +34,7 @@ class App extends React.Component {
                 </ul>
               </div>
             </nav>
-          </div>
+
           <div className="w-100 margin-top-20"></div>
 
           <Main />
