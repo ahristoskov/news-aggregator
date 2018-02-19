@@ -5,26 +5,23 @@ export default class Weather extends React.Component{
     constructor(props){
       super(props);        
 
-      this.state = { weather: '', city: '', temp: '' };
+      this.state = { city: '', data: [] };
       this.refreshWidget = this.refreshWidget.bind(this);
     }
-
+    
     refreshWidget(){
-        let th = this;
-        fetch('http://api.openweathermap.org/data/2.5/weather?q=Sofia,BG&units=metric&appid=e2ced8562e44f35e13ce8481ad55b72d')
-        .then(function(response) {
-          return response.json();
+      fetch('http://api.wunderground.com/api/5794dda6ffb50f2f/conditions/q/BG/Sofia.json')
+      .then((response) => 
+        {          
+          return response.json()
         })
-        .then(
-          function(result){
-            th.setState({
-              weather: result.weather['0'].main,
-              city: result.name,
-              temp: result.main.temp
-            }) 
-          }
-        )
-        .catch(err => console.error(th.props.url, err.toString()))      
+      .then((result) =>                   
+          this.setState({
+            city : result.current_observation.display_location,
+            data : result.current_observation
+          })         
+      )
+      .catch(err => console.error(this.props.url, err.toString()));      
     }
   
     componentDidMount(){          
@@ -42,9 +39,11 @@ export default class Weather extends React.Component{
             <h1> Weather </h1>                                        
           </div>                       
           <div className="col-4">
-            <p>City - {this.state.city}</p>
-            <p>Weather - {this.state.weather} </p>
-            <p>Temp - {this.state.temp} C&deg; </p>
+            <p><img src={this.state.data.icon_url} /></p>
+            <p>City - {this.state.city.full}</p>
+            <p>Weather - {this.state.data.icon} </p>
+            <p>Temp - {this.state.data.temp_c} C&deg; </p>
+            <p>Wind - {this.state.data.wind_kph} </p>
             <p id="timeOfDay"></p>      
             <button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>
           </div>

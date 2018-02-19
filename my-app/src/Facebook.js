@@ -50,7 +50,7 @@ export default class Facebook extends React.Component{
                   <h5 className="card-title">{item.story}</h5>
                 </div> : ""}
                 <a href={item.link} target="_blank">            
-                  <img className="card-img-top" src={item.picture} alt={item.message} />
+                  <img className="card-img-top" src={item.picture} alt="" />
                 </a>
                 <p className="card-text">
                   {item.message}
