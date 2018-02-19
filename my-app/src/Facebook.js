@@ -13,7 +13,7 @@ export default class Facebook extends React.Component{
   refreshWidget(url){    
  
     if(url === ''){
-      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message,picture&access_token=EAACEdEose0cBAObZB0Dca10vBRoSahVCXkvzQFsJZCBkO4NRDxX1TMkatuQ5vfZAHsbbgTQLb6JU4UNLjVkziaKwTQ0rzccELRn4qVOZAcSeCui6vXqSuZAa79A7tz2Bb0ZBbInt4VrmxNDUYIGrZAbBeBYmP6sbZCpi06Vl0p5putHShfrLHMjOP3jsojEpys4iWonWgFdZAPwZDZD';
+      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message,picture&access_token=EAACEdEose0cBAO6J27bQOKHlNbAqApBPqHWHxGGd5lyt1Xo2RFEFNMarwIMHSZC0oHOq0agJ5gBQeFZA6kZBWwcBTm7Wh7RZAZC3Iie5JFK0G7diZBz3dQojSxHO0xbsXJWhpjs0us7U1YgCpBkuheQcdeZAp0gZCwLKm0xqxfaCZBKGrNqt6x6nFx7XWz3OZCB3I4JElbZBpDnpgZDZD';
     }
     
     fetch(url)
