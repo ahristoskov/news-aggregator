@@ -47,20 +47,18 @@ export default class CryptoExchange extends React.Component{
           <h2> Exchanges </h2>                            
         </div>
         <div className="col-md">
-          <div className="col-sm">From Currency Code - {this.state.data["1. From_Currency Code"]}</div>   
-          <div className="col-sm">From Currency Name - {this.state.data["2. From_Currency Name"]}</div>   
-          <div className="col-sm">To Currency Code - {this.state.data["3. To_Currency Code"]}</div>   
-          <div className="col-sm">Exchange Rate - {Math.floor(this.state.data["5. Exchange Rate"])}</div>   
-          <div className="col-sm">Last Refreshed - {this.state.data["6. Last Refreshed"]}</div>              
-          <div className="col-3">
-            <select className="custom-select" onChange={this.change}>
-              <option value="BTC"> BTC </option>
-              <option value="ETH"> ETH </option>
-              <option value="XRP"> XRP </option>
-              <option value="ADA"> ADA </option>
-              <option value="BCH"> BCH </option>
-            </select>
-          </div>      
+          <p>From Currency Code - {this.state.data["1. From_Currency Code"]}</p>   
+          <p>From Currency Name - {this.state.data["2. From_Currency Name"]}</p>   
+          <p>To Currency Code - {this.state.data["3. To_Currency Code"]}</p>   
+          <p>Exchange Rate - {Math.floor(this.state.data["5. Exchange Rate"])}</p>   
+          <p>Last Refreshed - {this.state.data["6. Last Refreshed"]}</p>              
+          <select className="custom-select col-3" onChange={this.change}>
+            <option value="BTC"> BTC </option>
+            <option value="ETH"> ETH </option>
+            <option value="XRP"> XRP </option>
+            <option value="ADA"> ADA </option>
+            <option value="BCH"> BCH </option>
+          </select>
         </div>   
       </div>                                                                       
     )

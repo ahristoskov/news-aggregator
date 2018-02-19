@@ -1,55 +1,87 @@
 import React from 'react';
+import { createStore } from 'redux';
 
 export default class Weather extends React.Component{
 
     constructor(props){
       super(props);        
 
-      this.state = { city: '', data: [] };
+      this.state = { city: '', dataToday: [], dataForecast: [] };
       this.refreshWidget = this.refreshWidget.bind(this);
+      this.currentConditions = 'conditions';
+      this.forecast = 'forecast';
     }
     
-    refreshWidget(){
-      fetch('http://api.wunderground.com/api/5794dda6ffb50f2f/conditions/q/BG/Sofia.json')
+    refreshWidget(key){
+      let url = 'http://api.wunderground.com/api/5794dda6ffb50f2f/'+key+'/q/BG/Sofia.json';
+
+      fetch(url)
       .then((response) => 
         {          
-          return response.json()
+          return response.json();
         })
-      .then((result) =>                   
+      .then((result) => {
+        if(key === 'conditions'){                  
           this.setState({
             city : result.current_observation.display_location,
-            data : result.current_observation
-          })         
-      )
+            dataToday : result.current_observation
+          });         
+        }
+        else{
+          this.setState({                       
+            dataForecast : result.forecast.simpleforecast.forecastday
+          });
+        }
+      })
       .catch(err => console.error(this.props.url, err.toString()));      
     }
   
     componentDidMount(){          
-        this.refreshWidget();
-        setTimeout(() => {
-          this.refreshWidget();
+        this.refreshWidget(this.currentConditions);
+        this.refreshWidget(this.forecast);
+        setTimeout(() => {        
+          this.refreshWidget(this.currentConditions);
+          this.refreshWidget(this.forecast);
         }, 60000);        
     }
   
     componentWillUnmount() {
   
-    }    
+    }        
    
     render(){                   
+      let elements = [];
+      if(this.state.dataForecast.length > 0){
+        this.state.dataForecast.forEach((item, index) => 
+        {
+          elements.push(
+            <div className="col-sm">
+              <h3>{item.date.weekday}</h3> 
+              <p><img src={item.icon_url} alt={item.icon} /></p>          
+              <p>Weather - {item.conditions}</p>
+              <p>Temp high - {item.high.celsius} C&deg; </p>
+              <p>Temp low - {item.low.celsius} C&deg; </p>
+              <p>Wind - {item.avewind.kph} K/PH</p>               
+            </div>
+          )
+        });
+      }
       return(
         <div className="row"> 
           <div className="col-12">  
-            <h1> Weather </h1>                                        
-          </div>                       
-          <div className="col-4">
-            <p><img src={this.state.data.icon_url} alt={this.state.data.icon} /></p>
-            <p>City - {this.state.city.full}</p>
-            <p>Weather - {this.state.data.weather}</p>
-            <p>Temp - {this.state.data.temp_c} C&deg; </p>
-            <p>Wind - {this.state.data.wind_kph} K/PH</p>
-            <p>Updated @ {this.state.data.local_time_rfc822}</p>      
-            <button type="button" className="btn" onClick={this.refreshWidget}>Refresh</button>
+            <h1> Weather - {this.state.city.full} </h1>                                                       
+          </div>                              
+          <hr />
+          <div className="w-100 margin-top-10"></div>
+          <div className="col-sm">
+            <h3>Today</h3>
+            <p><img src={this.state.dataToday.icon_url} alt={this.state.dataToday.icon} /></p>            
+            <p>Weather - {this.state.dataToday.weather}</p>
+            <p>Temp - {this.state.dataToday.temp_c} C&deg; </p>
+            <p>Wind - {this.state.dataToday.wind_kph} K/PH</p>
+            <p>Updated @ {this.state.dataToday.local_time_rfc822}</p>                  
           </div>
+          {elements}
         </div>
       )
     }

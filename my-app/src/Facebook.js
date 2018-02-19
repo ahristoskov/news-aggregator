@@ -9,10 +9,9 @@ export default class Facebook extends React.Component{
     this.refreshWidget = this.refreshWidget.bind(this);     
   }
   
-  refreshWidget(url){    
- 
+  refreshWidget(url){        
     if(url === ''){
-      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message,picture&access_token=EAACEdEose0cBAO6J27bQOKHlNbAqApBPqHWHxGGd5lyt1Xo2RFEFNMarwIMHSZC0oHOq0agJ5gBQeFZA6kZBWwcBTm7Wh7RZAZC3Iie5JFK0G7diZBz3dQojSxHO0xbsXJWhpjs0us7U1YgCpBkuheQcdeZAp0gZCwLKm0xqxfaCZBKGrNqt6x6nFx7XWz3OZCB3I4JElbZBpDnpgZDZD';
+      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message,picture&access_token=EAACEdEose0cBAIWhZBQIUZCj0MD73rGxASYdj2M7LZBxuyvvuPp9jtLxpTsI43JzhqbCstSacVsQjl9YXzXZCZAhEvgE4Bu7guuWANgcYTCiLf5ODOlR1FYZBEfl1nPUHhsAS1ypQp6lJu9ZBArh6T7l7DWUZCiDXpsYxCuOCS8FP7lZB0uwFgiuUNZCCKcTWwaskZD';
     }
     
     fetch(url)
@@ -71,12 +70,12 @@ export default class Facebook extends React.Component{
           <h2> Facebook </h2>                       
         </div>     
       {elements}
-        <div className="col-1">
-          <button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.previous)}> Previous </button>                                               
-        </div>
-        <div className="col-1">
-          <button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.next)}>Next</button>
-        </div>
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><a class="page-link" href="#" onClick={this.refreshWidget.bind(this, this.state.paging.previous)}>Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#" onClick={this.refreshWidget.bind(this, this.state.paging.next)}>Next</a></li>
+        </ul>
+      </nav>
         <div className="w-100 margin-top-10"></div>
       </div> 
     )        
