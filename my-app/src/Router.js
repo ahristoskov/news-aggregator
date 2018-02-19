@@ -1,6 +1,5 @@
-import React from 'react'
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Widget from  './Widget.js';
 import Weather from './Weather.js';
 import News from './News.js';
 import Facebook from './Facebook.js';

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 export default class Facebook extends React.Component{
 
@@ -46,12 +45,12 @@ export default class Facebook extends React.Component{
       elements.push(<div className="col-sm">
           <div className="card">
             <div className="card-body"> 
-              {typeof item.story != 'undefined' ?            
+              {typeof item.story !== 'undefined' ?            
                 <div class="card-header">
                   <h5 className="card-title">{item.story}</h5>
                 </div> : ""}
                 <a href={item.link} target="_blank">            
-                  <img className="card-img-top" src={item.picture} alt="Card image cap"/>
+                  <img className="card-img-top" src={item.picture} alt={item.message} />
                 </a>
                 <p className="card-text">
                   {item.message}
@@ -78,7 +77,7 @@ export default class Facebook extends React.Component{
         <div className="col-1">
           <button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.next)}>Next</button>
         </div>
-        <div class="w-100 margin-top-10"></div>
+        <div className="w-100 margin-top-10"></div>
       </div> 
     )        
   }  
