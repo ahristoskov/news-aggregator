@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 
 export default class Facebook extends React.Component{
 
@@ -13,7 +12,7 @@ export default class Facebook extends React.Component{
   refreshWidget(url){    
  
     if(url === ''){
-      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message,picture&access_token=EAACEdEose0cBAObZB0Dca10vBRoSahVCXkvzQFsJZCBkO4NRDxX1TMkatuQ5vfZAHsbbgTQLb6JU4UNLjVkziaKwTQ0rzccELRn4qVOZAcSeCui6vXqSuZAa79A7tz2Bb0ZBbInt4VrmxNDUYIGrZAbBeBYmP6sbZCpi06Vl0p5putHShfrLHMjOP3jsojEpys4iWonWgFdZAPwZDZD';
+      url = 'https://graph.facebook.com/v2.12/me/feed?fields=id,name,link,story,message,picture&access_token=EAACEdEose0cBAO90j7RZCbZCTK0ZAQafPxo96RPCQCow2wWLsZCe5UfZBXVuZBzhbFZBOZCW0qmgzQZAYqgZCPOazzZAefNeufTqviA1IgMd45xyZC2rtZCF7ZAcse0zx2OVuMOn4eZA3aRu0YYANVqQsxQ5PVWBYIP2N9BPJlp8d142vZB0p9e1JCb8MQDt9CWjjx6DZAO4ZD';
     }
     
     fetch(url)
@@ -46,12 +45,12 @@ export default class Facebook extends React.Component{
       elements.push(<div className="col-sm">
           <div className="card">
             <div className="card-body"> 
-              {typeof item.story != 'undefined' ?            
+              {typeof item.story !== 'undefined' ?            
                 <div class="card-header">
                   <h5 className="card-title">{item.story}</h5>
                 </div> : ""}
                 <a href={item.link} target="_blank">            
-                  <img className="card-img-top" src={item.picture} alt="Card image cap"/>
+                  <img className="card-img-top" src={item.picture} alt={item.message} />
                 </a>
                 <p className="card-text">
                   {item.message}
@@ -78,7 +77,7 @@ export default class Facebook extends React.Component{
         <div className="col-1">
           <button className="btn" onClick={this.refreshWidget.bind(this, this.state.paging.next)}>Next</button>
         </div>
-        <div class="w-100 margin-top-10"></div>
+        <div className="w-100 margin-top-10"></div>
       </div> 
     )        
   }  
