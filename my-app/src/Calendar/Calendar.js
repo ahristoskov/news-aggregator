@@ -9,7 +9,19 @@ export default class Calendar extends React.Component{
       this.state = { data : [] };
       this.refreshWidget = this.refreshWidget.bind(this);      
     }
+
+    addEvent(){
+
+    }
+
+    editEvent(){
+
+    }
     
+    removeEvent(){
+
+    }
+
     refreshWidget(key){
       let url = 'http://api.wunderground.com/api/5794dda6ffb50f2f/'+key+'/q/BG/Sofia.json';
 
@@ -47,16 +59,25 @@ export default class Calendar extends React.Component{
       let date = new Date();      
       let today = new Date(date.getMonth(), date.getFullYear(), 0).getDate();
       let separator = 0;
-      console.info(today);
 
       for(let i = 0; i < today; i++){
         separator++;
         days.push(
             <div className="col-2">
             <div className="card">
-                <div className="card-body">
-                <h4 className="card-title">{i+1}</h4>                 
-                <p>Text</p>                
+                <div class="card-header">
+                    <h4 className="card-title">{i+1}</h4>
+                </div>
+                <div className="card-body">                                 
+                <p>
+                    <a href="#" onClick={this.addEvent()}><span class="oi oi-plus"></span> Event</a>                   
+                </p>                
+                <p> 
+                    <a href="#" onClick={this.editEvent()}><span class="oi oi-pencil"></span> Event</a>                    
+                </p>
+                <p>
+                    <a href="#" onClick={this.removeEvent()}><span class="oi oi-minus"></span> Event</a>
+                </p>
                 </div>
             </div>
             </div>
@@ -71,9 +92,9 @@ export default class Calendar extends React.Component{
         <div className="row"> 
           <div className="col-12">  
             <h2> Calendar </h2>                    
-          </div>                                        
-          <div className="w-100 margin-top-10"></div> 
+          </div>                                                   
           {days}         
+          <div className="w-100 margin-top-10"></div>
         </div>
       )
     }
