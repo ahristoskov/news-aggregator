@@ -20,7 +20,10 @@ class App extends React.Component {
                     <Link className="nav-link" to="/news/bbc-news">BBC News</Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/news/reddit-r-all">Reddit</Link>
+                    <Link className="nav-link" to="/news/reddit-r-all">Across the web</Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/calendar">Calendar</Link>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link" to="/facebook">Facebook</Link>
