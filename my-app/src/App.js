@@ -5,7 +5,7 @@ import Main from './Router';
 
 class App extends React.Component {
   render(){
-    let date = new Date().getMonth();
+    let date = new Date().getMonth()+1;
     return (
       <div className="container-fluid">   
             <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content">

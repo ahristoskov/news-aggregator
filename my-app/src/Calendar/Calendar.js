@@ -13,9 +13,12 @@ export default class Calendar extends React.Component{
       this.removeEvent = this.removeEvent.bind(this); 
     }
 
-    addEvent(){
+    addEvent(eventInfo){
+
       this.setState({
-        data : ["My first note"]
+        data : [
+          {"day":eventInfo.day}
+        ]
       });
     }
 
@@ -64,15 +67,15 @@ export default class Calendar extends React.Component{
     render(){                   
       let days = [];      
       let date = new Date(); 
-      let dateSubtract = new Date() - date.getDay();     
-      let today = new Date(date.getFullYear(), date.getMonth(), 0).getDate();
+      let dateSubtract = '';
+      let today = new Date(date.getFullYear(), this.props.match.params.month, 0).getDate();
       let weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
       let month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
       let separator = 0;    
 
       for(let i = 0; i < today; i++){          
         separator++;
-        dateSubtract = new Date(date.getFullYear(), date.getMonth(), i).getDay();
+        dateSubtract = new Date(date.getFullYear(), this.props.match.params.month, i).getDay();
         days.push(
             <div className="col-md-2 col-sm-3">
                 <div className="card">
@@ -82,7 +85,7 @@ export default class Calendar extends React.Component{
                     <div className="card-body">                        
                       {this.state.data.length > 0 ? <p>{this.state.data[0]}</p> : ''}                                                 
                     <p>
-                      <a href="#" onClick={this.addEvent}><i className="fas fa-plus-circle"></i> Add new event</a>                   
+                      <a href="#" onClick={this.addEvent.bind(this, weekday[dateSubtract])}><i className="fas fa-plus-circle"></i> Add new event</a>                   
                     </p>                
                     <p> 
                       <a href="#" onClick={this.editEvent}><i className="fas fa-pencil-alt"></i> Edit event</a>                    
@@ -103,7 +106,7 @@ export default class Calendar extends React.Component{
       return(
         <div className="row"> 
           <div className="col-12">  
-            <h2><i className="far fa-calendar-alt"></i> Calendar - {month[this.props.match.params.month]}</h2>                    
+            <h2><i className="far fa-calendar-alt"></i> Calendar - {month[parseInt(this.props.match.params.month)-1]}</h2>                    
           </div>                                                             
           {days}         
           <div className="w-100 margin-top-10"></div>
