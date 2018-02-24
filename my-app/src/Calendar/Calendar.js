@@ -73,13 +73,13 @@ export default class Calendar extends React.Component{
                     </div>
                     <div className="card-body">                                 
                     <p>
-                        <a href="#" onClick={this.addEvent()}><i class="fas fa-plus-circle"></i> Event</a>                   
+                        <a href="#" onClick={this.addEvent()}><i class="fas fa-plus-circle"></i> Add new event</a>                   
                     </p>                
                     <p> 
-                        <a href="#" onClick={this.editEvent()}><i class="fas fa-pencil-alt"></i> Event</a>                    
+                        <a href="#" onClick={this.editEvent()}><i class="fas fa-pencil-alt"></i> Edit event</a>                    
                     </p>
                     <p>
-                        <a href="#" onClick={this.removeEvent()}><i class="fas fa-minus-circle"></i> Event</a>
+                        <a href="#" onClick={this.removeEvent()}><i class="fas fa-minus-circle"></i> Remove event</a>
                     </p>
                     </div>
                 </div>
@@ -94,13 +94,13 @@ export default class Calendar extends React.Component{
       return(
         <div className="row"> 
           <div className="col-12">  
-            <h2> Calendar </h2>                    
+            <h2><i className="far fa-calendar-alt"></i> Calendar </h2>                    
           </div>                                                             
           {days}         
           <div className="w-100 margin-top-10"></div>
-          <div className="col-12">
-            <a href={date.getMonth()+1}>Previous <img data-direction="left" data-src="arrow-thick.svg" className="iconic" alt="arrow-thick" /></a>
-            <a href={date.getMonth()+1}>Next <i class="fas fa-arrow-right"></i></a>            
+          <div className="col-12 text-center">
+            <h2><a href={date.getMonth()+1}><i class="fas fa-arrow-left"></i> Previous Month</a>&nbsp;|&nbsp;
+            <a href={date.getMonth()+1}>Next Month <i class="fas fa-arrow-right"></i></a></h2>
           </div>
         </div>
       )
