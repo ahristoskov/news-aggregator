@@ -18,7 +18,7 @@ class App extends React.Component {
               <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                   <li className="nav-item">
-                    <Link className="nav-link" to="/news/bbc-news">BBC News</Link>
+                    <Link className="nav-link" to="/news/bbc-news">News</Link>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link" to="/news/reddit-r-all">Across the web</Link>

@@ -1,22 +1,24 @@
 import React from 'react';
+import Sources from './News/Sources';
 
 export default class News extends React.Component{
 
   constructor(props){
     super(props);        
-    this.state = { data: []};
+    this.state = { data: [], source: ''};
     this.refreshWidget = this.refreshWidget.bind(this);     
   }
 
   refreshWidget(){
-    fetch('https://newsapi.org/v1/articles?source='+this.props.match.params.agency+'&sortBy=top&apiKey=397076914c2b49ba9d6ac7e0f42e0e4a')
+    fetch('https://newsapi.org/v2/top-headlines?sources='+this.props.match.params.agency+'&sortBy=top&apiKey=397076914c2b49ba9d6ac7e0f42e0e4a')
     .then((response) => 
       {
         return response.json()
       })
     .then((result) => 
       this.setState({
-        data : result.articles
+        data : result.articles,
+        source : result.articles[0].source.name       
       })        
     )
     .catch(err => console.error(this.props.url, err.toString())) 
@@ -32,7 +34,7 @@ export default class News extends React.Component{
  
   render(){  
     let elements = [];
-    let list = 0;
+    let list = 0;    
 
     this.state.data.forEach((item, index) => {
       list++;
@@ -62,7 +64,9 @@ export default class News extends React.Component{
     return(
     <div className="row">
       <div className="col-12">
-        <h2> News </h2>                                    
+        <h2> {this.state.source} </h2>           
+        <Sources />                     
+        <div class="w-100 margin-top-10"></div>                      
       </div>    
       {elements}                                                          
       <div class="w-100 margin-top-10"></div>
