@@ -5,6 +5,7 @@ import Main from './Router';
 
 class App extends React.Component {
   render(){
+    let date = new Date().getMonth();
     return (
       <div className="container-fluid">   
             <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content">
@@ -23,7 +24,7 @@ class App extends React.Component {
                     <Link className="nav-link" to="/news/reddit-r-all">Across the web</Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/calendar">Calendar</Link>
+                    <Link className="nav-link" to={"/calendar/"+date}>Calendar</Link>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link" to="/facebook">Facebook</Link>
