@@ -6,7 +6,7 @@ import Main from './Router';
 class App extends React.Component {
   render(){
     return (
-      <div className="container">   
+      <div className="container-fluid">   
             <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content">
               <Link className="navbar-brand" to="/">
                 <img src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="" />
