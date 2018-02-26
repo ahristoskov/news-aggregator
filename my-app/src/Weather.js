@@ -59,10 +59,10 @@ export default class Weather extends React.Component{
                 <div className="card-body">            
                   <h4 className="card-title">{item.date.weekday}</h4>                 
                   <p><img src={item.icon_url} alt={item.icon} /></p>          
-                  <p>Weather - {item.conditions}</p>
-                  <p>Temp high - {item.high.celsius} C&deg; </p>
-                  <p>Temp low - {item.low.celsius} C&deg; </p>
-                  <p>Wind - {item.avewind.kph} K/PH</p>    
+                  <p>Weather : {item.conditions}</p>
+                  <p>Temp high : {item.high.celsius} C&deg; </p>
+                  <p>Temp low : {item.low.celsius} C&deg; </p>
+                  <p>Wind : {item.avewind.kph} K/PH</p>    
                 </div>
               </div>                         
             </div>
@@ -80,9 +80,9 @@ export default class Weather extends React.Component{
               <div className="card-body">
                 <h4 className="card-title">Current</h4>                 
                 <p><img src={this.state.dataToday.icon_url} alt={this.state.dataToday.icon} /></p>            
-                <p>Weather - {this.state.dataToday.weather}</p>
-                <p>Temp - {this.state.dataToday.temp_c} C&deg; </p>
-                <p>Wind - {this.state.dataToday.wind_kph} K/PH</p>
+                <p>Weather : {this.state.dataToday.weather}</p>
+                <p>Temp : {this.state.dataToday.temp_c} C&deg; </p>
+                <p>Wind : {this.state.dataToday.wind_kph} K/PH</p>
                 <p>Updated @ {this.state.dataToday.local_time_rfc822}</p>                  
               </div>
             </div>
