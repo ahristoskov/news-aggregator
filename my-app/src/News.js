@@ -5,15 +5,22 @@ export default class News extends React.Component{
 
   constructor(props){
     super(props);        
-    this.state = { data: [], source: ''};
-    this.refreshWidget = this.refreshWidget.bind(this);     
+    this.state = { data : [],
+                   source : '',
+                   newsSourceChanged : false
+                 };
+    this.refreshWidget = this.refreshWidget.bind(this);  
+    this.myCallback = this.myCallback.bind(this);   
   }
 
-  refreshWidget(){
-    fetch('https://newsapi.org/v2/top-headlines?sources='+this.props.match.params.agency+'&sortBy=top&apiKey=397076914c2b49ba9d6ac7e0f42e0e4a')
+  refreshWidget(agency){
+    if(agency === ''){
+      agency = this.props.match.params.agency;
+    }
+    fetch('https://newsapi.org/v2/top-headlines?sources='+agency+'&sortBy=top&apiKey=397076914c2b49ba9d6ac7e0f42e0e4a')
     .then((response) => 
       {
-        return response.json()
+        return response.json();
       })
     .then((result) => 
       this.setState({
@@ -21,13 +28,18 @@ export default class News extends React.Component{
         source : result.articles[0].source.name       
       })        
     )
-    .catch(err => console.error(this.props.url, err.toString())) 
+    .catch(err => console.error(this.props.url, err.toString()));
+  }   
+
+  componentDidMount(){      
+    this.refreshWidget();
+    //console.log(store);                         
   } 
 
-  componentDidMount(){  
-    this.refreshWidget();                         
-  } 
-    
+  myCallback(dataFromChild){
+    this.refreshWidget(dataFromChild);
+  }
+
   componentWillUnmount() {
 
   }
@@ -65,7 +77,7 @@ export default class News extends React.Component{
     <div className="row">
       <div className="col-12">
         <h2> {this.state.source} </h2>           
-        <Sources />                     
+        <Sources callbackFromParent={this.myCallback} />                     
         <div class="w-100 margin-top-10"></div>                      
       </div>    
       {elements}                                                          

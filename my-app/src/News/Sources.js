@@ -1,18 +1,21 @@
 import React from 'react';
-import { createStore } from 'redux';
 import { Link, Redirect } from 'react-router-dom';
+import createHistory from 'history/createBrowserHistory';
+
+const history = createHistory();
 
 export default class Sources extends React.Component{
 
     constructor(props){
       super(props);        
 
-      this.state = {data: []};
-      this.refreshWidget = this.refreshWidget.bind(this);
+      this.state = {data: [], newsSourceChanged : false};
+      this.state.newsSourceChanged = false;
+      this.refreshWidget = this.getSources.bind(this);
       this.change = this.change.bind(this);    
     }
     
-    refreshWidget(){
+    getSources(){
       let url = 'https://newsapi.org/v2/sources?apiKey=397076914c2b49ba9d6ac7e0f42e0e4a';
 
       fetch(url)
@@ -28,12 +31,13 @@ export default class Sources extends React.Component{
       .catch(err => console.error(this.props.url, err.toString()));      
     }
 
-    change(event){            
-        this.props.history.push(event.target.value);
-    }
-  
     componentDidMount(){          
-        this.refreshWidget();
+        this.getSources();
+    }
+
+    change(event){                    
+        history.replace(event.target.value);  
+        this.props.callbackFromParent(event.target.value);                
     }
   
     componentWillUnmount() {
@@ -45,7 +49,7 @@ export default class Sources extends React.Component{
         this.state.data.forEach((item, index) => 
         {
             elements.push(
-                <option value={'news/'+item.id}>                    
+                <option value={item.id}>                    
                         {item.name}                   
                 </option>
             )

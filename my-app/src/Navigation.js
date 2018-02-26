@@ -1,5 +1,6 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 import Weather from './Weather';
 import News from './News';
 import Facebook from './Facebook';
@@ -12,15 +13,13 @@ import Calendar from './Calendar/Calendar';
 // with /roster or /schedule. The / route will only match
 // when the pathname is exactly the string "/"
 const Main = () => (
-  <main>
-    <Switch>
-      <Route path='/news/:agency' component={News}/>      
-      <Route path='/calendar/:month' component={Calendar}/>
-      <Route path='/facebook' component={Facebook}/>
-      <Route path='/exchanges' component={CryptoExchange}/>
-      <Route path='/weather' component={Weather}/>      
-    </Switch>
-  </main>
+    <Switch>     
+        <Route path='/news/:agency' component={News}/>      
+        <Route path='/calendar/:month' component={Calendar}/>
+        <Route path='/facebook' component={Facebook}/>
+        <Route path='/exchanges' component={CryptoExchange}/>
+        <Route path='/weather' component={Weather}/>           
+    </Switch>    
 )
 
 export default Main

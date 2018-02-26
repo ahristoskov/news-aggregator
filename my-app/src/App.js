@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './App.css';
-import Main from './Router';
+import Main from './Navigation';
 
 class App extends React.Component {
   render(){
@@ -39,10 +38,9 @@ class App extends React.Component {
               </div>
             </nav>
 
-          <div className="w-100 margin-top-20"></div>
-
-          <Main />
-        
+          <div className="w-100 margin-top-20"></div>          
+          
+        <Main />
       </div>
     )
  }
