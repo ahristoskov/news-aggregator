@@ -63,3 +63,7 @@ hr{
   margin-right: 60px !important;
   margin-left: 60px !important;
 }
+.container-fluid{
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}

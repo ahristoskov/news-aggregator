@@ -13,8 +13,8 @@ export default class News extends React.Component{
     this.myCallback = this.myCallback.bind(this);   
   }
 
-  refreshWidget(agency){
-    if(agency === ''){
+  refreshWidget(agency){    
+    if(agency === undefined){
       agency = this.props.match.params.agency;
     }
     fetch('https://newsapi.org/v2/top-headlines?sources='+agency+'&sortBy=top&apiKey=397076914c2b49ba9d6ac7e0f42e0e4a')
@@ -32,8 +32,7 @@ export default class News extends React.Component{
   }   
 
   componentDidMount(){      
-    this.refreshWidget();
-    //console.log(store);                         
+    this.refreshWidget();        
   } 
 
   myCallback(dataFromChild){
@@ -47,28 +46,29 @@ export default class News extends React.Component{
   render(){  
     let elements = [];
     let list = 0;    
-
+    
     this.state.data.forEach((item, index) => {
       list++;
       elements.push(<div className="col-sm">
         <div className="card">
-          <div className="card-body">            
-            <div class="card-header">
-              <h5 className="card-title">{item.author}</h5>
-            </div>
-            <a href={item.url} target="_blank" title={item.title}>
+          <a href={item.url} target="_blank" title={item.title}>
               <img className="card-img-top" src={item.urlToImage} alt={item.title} />
-            </a>            
+          </a> 
+          <div className="card-body">                        
+            <a href={item.url} target="_blank" title={item.title}>
+              <h5 className="card-title">{index+1}. {item.title}</h5>
+            </a>                     
+            <p className="card-text">              
+              {item.description}                            
+            </p>
             <p className="card-text">
-              <a href={item.url} target="_blank" title={item.title}>{index+1}. {item.title}</a> <br/>
-              {item.description} <br/>
               {item.publishedAt}
             </p>
           </div>
         </div>      
       </div>)              
       if(list === 4){
-        elements.push(<div class="w-100 margin-top-10"></div>); 
+        elements.push(<div className="w-100 margin-top-10"></div>); 
         list = 0;   
       }
     });    
@@ -78,10 +78,12 @@ export default class News extends React.Component{
       <div className="col-12">
         <h2> {this.state.source} </h2>           
         <Sources callbackFromParent={this.myCallback} />                     
-        <div class="w-100 margin-top-10"></div>                      
+        <div className="w-100 margin-top-10"></div>                      
       </div>    
-      {elements}                                                          
-      <div class="w-100 margin-top-10"></div>
+      <div class="card-deck">
+        {elements}             
+      </div>                                             
+      <div className="w-100 margin-top-10"></div>
     </div>     
   )};
 

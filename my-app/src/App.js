@@ -1,15 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+import { createStore } from 'redux';
+import genApp from './Reducers/reducers.js';
 import Main from './Navigation';
 
 class App extends React.Component {
   render(){
     let date = new Date().getMonth()+1;
+    let store = createStore(genApp);
     return (
       <div className="container-fluid">   
             <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content">
               <Link className="navbar-brand" to="/">
-                <img src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" width="30" height="30" alt="" />
+                <i className="fas fa-coffee"></i>
               </Link>
               <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
@@ -18,9 +22,6 @@ class App extends React.Component {
                 <ul className="navbar-nav">
                   <li className="nav-item">
                     <Link className="nav-link" to="/news/bbc-news">News</Link>
-                  </li>
-                  <li className="nav-item">
-                    <Link className="nav-link" to="/news/reddit-r-all">Across the web</Link>
                   </li>
                   <li className="nav-item">
                     <Link className="nav-link" to={"/calendar/"+date}>Calendar</Link>
@@ -40,7 +41,7 @@ class App extends React.Component {
 
           <div className="w-100 margin-top-20"></div>          
           
-        <Main />
+        <Main store={store} />
       </div>
     )
  }
