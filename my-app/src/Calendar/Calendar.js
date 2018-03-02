@@ -66,8 +66,7 @@ export default class Calendar extends React.Component{
    
     render(){                   
       let days = [];      
-      let date = new Date(); 
-      let dateSubtract = '';
+      let date = new Date();       
       let today = new Date(date.getFullYear(), this.props.match.params.month, 0).getDate();
       let weekday = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
       let month = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -75,7 +74,7 @@ export default class Calendar extends React.Component{
 
       for(let i = 0; i < today; i++){          
         separator++;
-        dateSubtract = new Date(date.getFullYear(), this.props.match.params.month, i).getDay();
+        let dateSubtract = new Date(date.getFullYear(), this.props.match.params.month, i).getDay();
         days.push(
             <div className="col-md-2 col-sm-3">
                 <div className="card">
@@ -111,8 +110,10 @@ export default class Calendar extends React.Component{
           {days}         
           <div className="w-100 margin-top-10"></div>
           <div className="col-12 text-center">
-            <h2><a href={'/calendar/'+(parseInt(this.props.match.params.month)-1)}><i class="fas fa-arrow-left"></i> Previous Month</a>&nbsp;|&nbsp;
-            <a href={'/calendar/'+(parseInt(this.props.match.params.month)+1)}>Next Month <i class="fas fa-arrow-right"></i></a></h2>
+            <h2>
+              <a href={'/calendar/'+(parseInt(this.props.match.params.month)-1)}><i class="fas fa-arrow-left"></i> Previous Month</a>&nbsp;|&nbsp;
+              <a href={'/calendar/'+(parseInt(this.props.match.params.month)+1)}>Next Month <i class="fas fa-arrow-right"></i></a>
+            </h2>
           </div>
         </div>        
       )

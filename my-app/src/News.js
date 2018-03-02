@@ -5,19 +5,31 @@ export default class News extends React.Component{
 
   constructor(props){
     super(props);        
-    this.state = { data : [],
+    this.state = { 
+                   data : [],
                    source : '',
-                   newsSourceChanged : false
+                   results : 0,
+                   newsSourceChanged : false,
+                   searchString : ''
                  };
-    this.refreshWidget = this.refreshWidget.bind(this);  
-    this.myCallback = this.myCallback.bind(this);   
+    this.fetchAPIData = this.fetchAPIData.bind(this);  
+    this.handleChange = this.handleChange.bind(this);
+    this.getNewsfromSource = this.getNewsfromSource.bind(this);   
   }
 
-  refreshWidget(agency){    
-    if(agency === undefined){
-      agency = this.props.match.params.agency;
+  fetchAPIData(agency, search, searchString){    
+    let apiEndpoint = '';    
+    
+    if(agency === ''){
+      agency = this.props.match.params.agency;     
     }
-    fetch('https://newsapi.org/v2/top-headlines?sources='+agency+'&sortBy=top&apiKey=397076914c2b49ba9d6ac7e0f42e0e4a')
+    apiEndpoint = 'https://newsapi.org/v2/top-headlines?sources='+agency+'&sortBy=top&apiKey=397076914c2b49ba9d6ac7e0f42e0e4a'; 
+
+    if(search === true){      
+      apiEndpoint = 'https://newsapi.org/v2/everything?q='+searchString+'&sortBy=popularity&apiKey=397076914c2b49ba9d6ac7e0f42e0e4a';
+    }
+
+    fetch(apiEndpoint)
     .then((response) => 
       {
         return response.json();
@@ -25,18 +37,23 @@ export default class News extends React.Component{
     .then((result) => 
       this.setState({
         data : result.articles,
+        results : result.totalResults,
         source : result.articles[0].source.name       
       })        
     )
     .catch(err => console.error(this.props.url, err.toString()));
   }   
+  
+  handleChange(event){
+    this.setState({searchString : event.target.value});
+  }
 
   componentDidMount(){      
-    this.refreshWidget();        
+    this.fetchAPIData('', false, '');        
   } 
 
-  myCallback(dataFromChild){
-    this.refreshWidget(dataFromChild);
+  getNewsfromSource(dataFromChild){
+    this.fetchAPIData(dataFromChild, false, '');
   }
 
   componentWillUnmount() {
@@ -76,8 +93,20 @@ export default class News extends React.Component{
     return(
     <div className="row">
       <div className="col-12">
-        <h2> {this.state.source} </h2>           
-        <Sources callbackFromParent={this.myCallback} />                     
+        <h2> {this.state.source} - {this.state.results}</h2>           
+        <div className="form-row">
+          <div className="col-10">
+            <Sources callbackFromParent={this.getNewsfromSource} /> 
+          </div>
+          <div className="col-2">
+            <div class="input-group">      
+                <input className="form-control form-control-sm" type="text" value={this.state.searchString} placeholder="Search news for..." onChange={this.handleChange} /> 
+              <div class="input-group-append">
+                <input type="button" className="form-control btn btn-primary" value="Go" onClick={this.fetchAPIData.bind(this, '', true, this.state.searchString)} />
+              </div>
+            </div>                                    
+          </div>          
+        </div>                                           
         <div className="w-100 margin-top-10"></div>                      
       </div>    
       <div class="card-deck">

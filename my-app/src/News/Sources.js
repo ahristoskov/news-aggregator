@@ -9,9 +9,8 @@ export default class Sources extends React.Component{
     constructor(props){
       super(props);        
 
-      this.state = {data: [], newsSourceChanged : false};
-      this.state.newsSourceChanged = false;
-      this.refreshWidget = this.getSources.bind(this);
+      this.state = {data: [], newsSourceChanged : false};      
+      this.getSources = this.getSources.bind(this);
       this.change = this.change.bind(this);    
     }
     
@@ -58,7 +57,7 @@ export default class Sources extends React.Component{
         return(
             <select className="custom-select col-2" onChange={this.change}>                    
                 {elements}
-            </select>
+            </select>            
         )
     }
     

@@ -10,7 +10,8 @@ import Calendar from './Calendar/Calendar';
 
 import { Provider } from 'react-redux';
 
-const Main = ({store}) => (        
+const Main = ({store}) => (    
+    console.log(store),    
     <Provider store={store}>
         <Switch>     
             <Route path='/news/:agency' component={News}/>      
