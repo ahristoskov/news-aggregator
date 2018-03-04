@@ -6,7 +6,7 @@ class NavBarBottom extends React.Component {
     return (    
         <footer>
             <nav className="navbar navbar-expand-lg navbar-light bg-dark justify-content-center">
-                <p>All rights reserved &reg;</p>
+                <p>Next Level Solutions ltd. All rights reserved &reg;</p>
             </nav>          
         </footer>           
     );

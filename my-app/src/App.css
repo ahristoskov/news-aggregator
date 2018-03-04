@@ -21,10 +21,6 @@
   font-size: large;
 }
 
-.widget-title, .widget-content{
-  width: 100%
-}
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -47,7 +43,7 @@
   padding-left: 0px !important;
 }
 
-body{
+header {
   font-size: 1.1rem !important;
 }
 
@@ -61,13 +57,13 @@ header a{
 
 @media only screen and (min-width: 768px){
   .row{
-    margin-right: 60px !important;
-    margin-left: 60px !important;
+    margin-right: 4rem !important;
+    margin-left: 4rem !important;
   }
 }
 @media only screen and (max-width: 768px){
   .row{
-    margin-right: 15px !important;
-    margin-left: 15px !important;
+    margin-right: 1rem !important;
+    margin-left: 1rem !important;
   }
 }

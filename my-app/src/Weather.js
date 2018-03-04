@@ -7,6 +7,7 @@ export default class Weather extends React.Component{
 
       this.state = { city: '', dataToday: [], dataForecast: [] };
       this.refreshWidget = this.refreshWidget.bind(this);
+      this.renderCards = this.renderCards.bind(this);
       this.currentConditions = 'conditions';
       this.forecast = 'forecast';
     }
@@ -47,35 +48,38 @@ export default class Weather extends React.Component{
     componentWillUnmount() {
   
     }        
-   
-    render(){                   
+
+    renderCards(){
       let elements = [];
       if(this.state.dataForecast.length > 0){
         this.state.dataForecast.forEach((item, index) => 
         {
           elements.push(
-            <div className="col-sm">
-              <div className="card">
-                <div className="card-body">            
-                  <h4 className="card-title">{item.date.weekday}</h4>                 
-                  <p><img src={item.icon_url} alt={item.icon} /></p>          
-                  <p>Weather : {item.conditions}</p>
-                  <p>Temp high : {item.high.celsius} C&deg; </p>
-                  <p>Temp low : {item.low.celsius} C&deg; </p>
-                  <p>Wind : {item.avewind.kph} K/PH</p>    
-                </div>
-              </div>                         
-            </div>
+            <div className="card">
+              <div className="card-body">            
+                <h4 className="card-title">{item.date.weekday}</h4>                 
+                <p><img src={item.icon_url} alt={item.icon} /></p>          
+                <p>Weather : {item.conditions}</p>
+                <p>Temp high : {item.high.celsius} C&deg; </p>
+                <p>Temp low : {item.low.celsius} C&deg; </p>
+                <p>Wind : {item.avewind.kph} K/PH</p>                  
+              </div>
+            </div>                         
           )
         });
       }
+
+      return elements;
+    }
+   
+    render(){                         
       return(
-        <div className="row"> 
-          <div className="col-12">  
+        <div className="row justify-content-center"> 
+          <div className="col-md-12">  
             <h2> Weather - {this.state.city.full} </h2>                    
           </div>                                        
           <div className="w-100 margin-top-10"></div>
-          <div className="col-sm">
+          <div className="card-deck">
             <div className="card">
               <div className="card-body">
                 <h4 className="card-title">Current</h4>                 
@@ -86,8 +90,8 @@ export default class Weather extends React.Component{
                 <p>Updated @ {this.state.dataToday.local_time_rfc822}</p>                  
               </div>
             </div>
-          </div>
-          {elements}
+            {this.renderCards()}
+          </div>          
         </div>
       )
     }
