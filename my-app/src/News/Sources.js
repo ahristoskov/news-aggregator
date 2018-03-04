@@ -55,7 +55,7 @@ export default class Sources extends React.Component{
         });
 
         return(
-            <select className="custom-select col-2" onChange={this.change}>                    
+            <select className="custom-select col-md-2 col-sm-12" onChange={this.change}>                    
                 {elements}
             </select>            
         )

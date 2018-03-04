@@ -66,7 +66,7 @@ export default class News extends React.Component{
     
     this.state.data.forEach((item, index) => {
       list++;
-      elements.push(<div className="col-sm">
+      elements.push(<div className="col-md-3 col-sm-10">
         <div className="card">
           <a href={item.url} target="_blank" title={item.title}>
               <img className="card-img-top" src={item.urlToImage} alt={item.title} />
@@ -93,12 +93,12 @@ export default class News extends React.Component{
     return(
     <div className="row">
       <div className="col-12">
-        <h2> {this.state.source} - {this.state.results}</h2>           
+        <h2> {this.state.source} - {this.state.results} results</h2>           
         <div className="form-row">
-          <div className="col-10">
+          <div className="col-md-10 col-sm-12">
             <Sources callbackFromParent={this.getNewsfromSource} /> 
           </div>
-          <div className="col-2">
+          <div className="col-md-2 col-sm-12">
             <div class="input-group">      
                 <input className="form-control form-control-sm" type="text" value={this.state.searchString} placeholder="Search news for..." onChange={this.handleChange} /> 
               <div class="input-group-append">

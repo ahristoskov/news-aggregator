@@ -3,8 +3,7 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  animation: App-logo-spin 1 2.5s linear;  
 }
 
 .App-header {
@@ -59,15 +58,28 @@ hr{
   stroke: greenyellow;
 }
 
-.row{
-  margin-right: 60px !important;
-  margin-left: 60px !important;
-}
 .container-fluid{
   padding-right: 0px !important;
   padding-left: 0px !important;
 }
 
-footer{
+header, footer{
   color: #fff;
+}
+
+header a{
+  color: #fff;
+}
+
+@media only screen and (min-width: 768px){
+  .row{
+    margin-right: 60px !important;
+    margin-left: 60px !important;
+  }
+}
+@media only screen and (max-width: 768px){
+  .row{
+    margin-right: 15px !important;
+    margin-left: 15px !important;
+  }
 }

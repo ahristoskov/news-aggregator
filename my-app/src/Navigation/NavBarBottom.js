@@ -5,7 +5,7 @@ class NavBarBottom extends React.Component {
   render(){
     return (    
         <footer>
-            <nav className="navbar navbar-expand-lg navbar-light bg-dark text-center">
+            <nav className="navbar navbar-expand-lg navbar-light bg-dark justify-content-center">
                 <p>All rights reserved &reg;</p>
             </nav>          
         </footer>           
