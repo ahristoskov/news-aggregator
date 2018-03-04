@@ -21,24 +21,8 @@
   font-size: large;
 }
 
-.square{
-  text-align: center;
-  margin-left:auto;
-  margin-right:auto;
-  width: 1180px;
-}
-
-.small-square{
-  width: 50%;
-  float: left;
-}
-
 .widget-title, .widget-content{
   width: 100%
-}
-
-hr{
-  width: 90%;
 }
 
 @keyframes App-logo-spin {
@@ -61,6 +45,10 @@ hr{
 .container-fluid{
   padding-right: 0px !important;
   padding-left: 0px !important;
+}
+
+body{
+  font-size: 1.1rem !important;
 }
 
 header, footer{

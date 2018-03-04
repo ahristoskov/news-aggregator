@@ -31,6 +31,11 @@ class NavBarTop extends React.Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/weather">Weather</Link>
               </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/about">
+                  <i className="fas fa-question"></i>
+                </Link>
+              </li>
             </ul>
           </div>
         </div>
