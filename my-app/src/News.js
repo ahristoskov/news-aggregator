@@ -69,13 +69,13 @@ export default class News extends React.Component{
       list++;                    
         elements.push(  
           <div className="card">
-            <a href={item.url} target="_blank" title={item.title}>
-                <img className="card-img-top" src={item.urlToImage} alt={item.title} />
-            </a> 
-            <div className="card-body">                        
+              <a href={item.url} target="_blank" title={item.title}>
+                  <img className="card-img-top" src={item.urlToImage} alt={item.title} />
+              </a> 
+            <div className="card-body"> 
               <a href={item.url} target="_blank" title={item.title}>
                 <h5 className="card-title">{index+1}. {item.title}</h5>
-              </a>                     
+              </a>                                                          
               <p className="card-text">              
                 {item.description}                            
               </p>
@@ -83,6 +83,7 @@ export default class News extends React.Component{
                 {item.publishedAt}
               </p>
             </div>
+            
           </div>)                                     
       if(list === 4){        
         elements.push(<div className="w-100 margin-top-10"></div>) 

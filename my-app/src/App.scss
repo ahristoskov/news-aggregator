@@ -1,0 +1,52 @@
+.App-logo {
+  animation: App-logo-spin 1 2.5s linear;  
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.margin-top-05 { margin-top: 0.5em; }
+.margin-top-10 { margin-top: 1.0em; }
+.margin-top-15 { margin-top: 1.5em; }
+.margin-top-20 { margin-top: 2.0em; }
+.margin-top-25 { margin-top: 2.5em; }
+.margin-top-30 { margin-top: 3.0em; }
+
+.container-fluid{
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+
+header {
+  background: linear-gradient(to bottom right, blue, rgb(0, 191, 255));
+  font-size: 1.1rem !important;
+}
+
+header, footer{
+  color: #fff;
+}
+
+header a {
+  color: var(--white);
+}
+
+@media only screen and (min-width: 768px){
+  .row{
+    margin-right: 4rem !important;
+    margin-left: 4rem !important;
+  }
+}
+@media only screen and (max-width: 768px){
+  .row{
+    margin-right: 1rem !important;
+    margin-left: 1rem !important;
+  }
+}
+
+@import "../node_modules/bootstrap/scss/bootstrap";

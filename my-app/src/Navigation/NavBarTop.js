@@ -6,7 +6,7 @@ class NavBarTop extends React.Component {
     let date = new Date().getMonth()+1;
     return (    
     <header>      
-      <nav className="navbar navbar-expand-lg bg-primary justify-content-center">
+      <nav className="navbar navbar-expand-lg justify-content-center">
         <div className="row">      
           <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
