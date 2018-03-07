@@ -20,8 +20,4 @@ const Main = () => (
     </Switch>    
 )
 
-Main.propTypes = {
-    store: PropTypes.object.isRequired
-  }
-
 export default Main

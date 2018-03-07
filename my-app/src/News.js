@@ -13,9 +13,11 @@ export default class News extends React.Component{
                    searchString : ''
                  };
     this.fetchAPIData = this.fetchAPIData.bind(this);  
-    this.handleChange = this.handleChange.bind(this);
     this.getAgencyFromSource = this.getAgencyFromSource.bind(this);  
-    this.addCardWrapper = this.addCardWrapper.bind(this); 
+    this.addCardWrapper = this.addCardWrapper.bind(this);
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   fetchAPIData(agency, search, searchString){    
@@ -47,6 +49,12 @@ export default class News extends React.Component{
   
   handleChange(event){
     this.setState({searchString : event.target.value});
+  }
+
+  handleKeyPress(event){    
+    if(event.key === 'Enter'){            
+      this.fetchAPIData('', true, this.state.searchString);
+    }
   }
 
   componentDidMount(){      
@@ -82,8 +90,7 @@ export default class News extends React.Component{
               <p className="card-text">
                 {item.publishedAt}
               </p>
-            </div>
-            
+            </div>            
           </div>)                                     
       if(list === 4){        
         elements.push(<div className="w-100 margin-top-10"></div>) 
@@ -106,18 +113,19 @@ export default class News extends React.Component{
             <Sources callbackFromParent={this.getAgencyFromSource} /> 
           </div>
           <div className="col-md-2 col-sm-12">
-            <div class="input-group">      
-                <input className="form-control form-control-sm" type="text" value={this.state.searchString} placeholder="Search news for..." onChange={this.handleChange} /> 
-              <div class="input-group-append">
+            <div className="input-group">      
+                <input className="form-control form-control-sm" type="text" value={this.state.searchString} placeholder="Search news for..." onChange={this.handleChange} 
+                onKeyPress={this.handleKeyPress} /> 
+              <div className="input-group-append">
                 <input type="button" className="form-control btn btn-primary" value="Go" onClick={this.fetchAPIData.bind(this, '', true, this.state.searchString)} />
               </div>
             </div>                                    
           </div>          
         </div>                                           
         <div className="w-100 margin-top-10"></div>                                     
-      {
-        this.addCardWrapper()        
-      }     
+        {
+          this.addCardWrapper()        
+        }     
       </div>                                                            
       <div className="w-100 margin-top-10"></div>
     </div>     
