@@ -3,59 +3,46 @@ import { Link, Redirect } from 'react-router-dom';
 import createHistory from 'history/createBrowserHistory';
 
 const history = createHistory();
+const API = 'https://newsapi.org/v2/sources?apiKey=397076914c2b49ba9d6ac7e0f42e0e4a';
 
 export default class Sources extends React.Component{
 
     constructor(props){
       super(props);        
 
-      this.state = {data: [], newsSourceChanged : false};      
-      this.getSources = this.getSources.bind(this);
-      this.change = this.change.bind(this);    
+      this.state = {data: [], newsSourceChanged : false};            
+      this.change = this.changeSource.bind(this);    
     }
     
-    getSources(){
-      let url = 'https://newsapi.org/v2/sources?apiKey=397076914c2b49ba9d6ac7e0f42e0e4a';
-
-      fetch(url)
-      .then((response) => 
-        {          
-          return response.json();
-        })
-      .then((result) => {        
+    componentDidMount(){          
+      fetch(API)
+      .then(response => response.json())
+      .then(result => {        
           this.setState({            
             data : result.sources
           });                 
       })
-      .catch(err => console.error(this.props.url, err.toString()));      
+      .catch(err => console.error(this.props.url, err.toString()));
     }
 
-    componentDidMount(){          
-        this.getSources();
-    }
-
-    change(event){                    
+    changeSource(event){                    
         history.replace(event.target.value);  
         this.props.callbackFromParent(event.target.value);                
     }
-  
-    componentWillUnmount() {
-  
-    }        
-   
+
     render(){                   
         let elements = []; 
-        this.state.data.forEach((item, index) => 
+        this.state.data.map((item, index) => 
         {
             elements.push(
-                <option value={item.id}>                    
+                <option value={item.id} key={index}>                    
                         {item.name}                   
                 </option>
             )
         });
 
         return(
-            <select className="custom-select col-md-2 col-sm-12" onChange={this.change}>                    
+            <select className="custom-select col-md-2 col-sm-12" onChange={this.changeSource}>                    
                 {elements}
             </select>            
         )

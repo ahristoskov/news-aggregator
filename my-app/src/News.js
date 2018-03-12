@@ -1,5 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Sources from './News/Sources';
+
+const API = 'https://newsapi.org/v2/';
+const APIKEY = 'apiKey=397076914c2b49ba9d6ac7e0f42e0e4a';
 
 export default class News extends React.Component{
 
@@ -14,10 +18,10 @@ export default class News extends React.Component{
                  };
     this.fetchAPIData = this.fetchAPIData.bind(this);  
     this.getAgencyFromSource = this.getAgencyFromSource.bind(this);  
-    this.addCardWrapper = this.addCardWrapper.bind(this);
+    this.addCards = this.addCards.bind(this);
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);    
   }
 
   fetchAPIData(agency, search, searchString){    
@@ -26,18 +30,15 @@ export default class News extends React.Component{
     if(agency === ''){
       agency = this.props.match.params.agency;     
     }
-    apiEndpoint = 'https://newsapi.org/v2/top-headlines?sources='+agency+'&sortBy=top&apiKey=397076914c2b49ba9d6ac7e0f42e0e4a'; 
+    apiEndpoint = API+'top-headlines?sources='+agency+'&sortBy=top&'+APIKEY; 
 
     if(search === true){      
-      apiEndpoint = 'https://newsapi.org/v2/everything?q='+searchString+'&sortBy=popularity&apiKey=397076914c2b49ba9d6ac7e0f42e0e4a';
+      apiEndpoint = API+'everything?q='+searchString+'&sortBy=popularity&'+APIKEY;
     }
 
     fetch(apiEndpoint)
-    .then((response) => 
-      {
-        return response.json();
-      })
-    .then((result) => 
+    .then(response => response.json())
+    .then(result => 
       this.setState({
         data : result.articles,
         results : result.totalResults,
@@ -61,22 +62,18 @@ export default class News extends React.Component{
     this.fetchAPIData('', false, '');        
   } 
 
-  getAgencyFromSource(dataFromChild){
-    this.fetchAPIData(dataFromChild, false, '');
+  getAgencyFromSource(newsSource){
+    this.fetchAPIData(newsSource, false, '');
   }
 
-  componentWillUnmount() {
-
-  }
-
-  addCardWrapper(){
+  addCards(){
     let elements = [];
     let list = 0;    
     
-    this.state.data.forEach((item, index) => {
+    this.state.data.map((item, index) => {
       list++;                    
         elements.push(  
-          <div className="card">
+          <div className="card" key={index}>
               <a href={item.url} target="_blank" title={item.title}>
                   <img className="card-img-top" src={item.urlToImage} alt={item.title} />
               </a> 
@@ -93,7 +90,7 @@ export default class News extends React.Component{
             </div>            
           </div>)                                     
       if(list === 4){        
-        elements.push(<div className="w-100 margin-top-10"></div>) 
+        elements.push(<div className="w-100 margin-top-10" key={10+index}></div>) 
         list = 0;         
       }
     });         
@@ -107,7 +104,7 @@ export default class News extends React.Component{
     return(
     <div className="row">
       <div className="col-12">
-        <h2> {this.state.source} - {this.state.results} results</h2>           
+        <h2> {this.state.source} - Top {this.state.results} results</h2>           
         <div className="form-row">
           <div className="col-md-10 col-sm-12">
             <Sources callbackFromParent={this.getAgencyFromSource} /> 
@@ -123,9 +120,7 @@ export default class News extends React.Component{
           </div>          
         </div>                                           
         <div className="w-100 margin-top-10"></div>                                     
-        {
-          this.addCardWrapper()        
-        }     
+        {this.addCards()}     
       </div>                                                            
       <div className="w-100 margin-top-10"></div>
     </div>     

@@ -1,14 +1,11 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { PropTypes } from 'prop-types';
 
 import Weather from './Weather';
 import News from './News';
 import Facebook from './Facebook';
 import CryptoExchange from './Exchanges/CryptoExchange';
 import Calendar from './Calendar/Calendar';
-
-import { Provider } from 'react-redux';
 
 const Main = () => (    
     <Switch>     
