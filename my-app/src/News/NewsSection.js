@@ -9,7 +9,7 @@ export default class NewsSection extends React.Component{
 
   constructor(props){
     super(props);        
-    console.info(props);
+    console.info("NewsSection Props", props);
     this.state = { 
                    data : [],
                    source : '',

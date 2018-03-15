@@ -9,12 +9,6 @@ import Calendar from './Calendar/Calendar';
 
 
 export default class Main extends React.Component{
-
-    constructor(props){
-      super(props);   
-      console.info(props);     
-    }
-
     render(){
        return( 
         <Switch>     

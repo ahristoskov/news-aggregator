@@ -8,11 +8,11 @@ class App extends React.Component {
   render(){    
     return (
       <div className="container-fluid">               
-        <NavBarTop agency="bbc-news" />
+        <NavBarTop />
         
         <div className="w-100 margin-top-20"></div>
         
-        <Main agency="bbc-news" />        
+        <Main />        
         
         <div className="w-100 margin-top-20"></div>  
         

@@ -1,13 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class NavBarTop extends React.Component {
-
-  constructor(props){
-    super(props);        
-    console.info(props);
-  }
-
+export default class NavBarTop extends React.Component {
   render(){
     let date = new Date().getMonth()+1;    
     return (    
@@ -50,5 +44,3 @@ class NavBarTop extends React.Component {
   );
   }
 }
-
-export default NavBarTop;
