@@ -6,8 +6,8 @@
   font-size: 1.5em;
 }
 
-#root{
-  background: linear-gradient(to top right,rgb(0, 191, 255), white);  
+body{
+  background: linear-gradient(to top right,rgb(0, 191, 255), rgba(0, 191, 255, 0.3));  
 }
 
 @keyframes App-logo-spin {
@@ -27,8 +27,7 @@
   padding-left: 0px !important;
 }
 
-header {
-  background: linear-gradient(to bottom right,rgb(0, 191, 255), white);  
+header {  
   font-size: 1.1rem !important;
 }
 
