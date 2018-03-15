@@ -6,6 +6,10 @@
   font-size: 1.5em;
 }
 
+#root{
+  background: linear-gradient(to top right,rgb(0, 191, 255), white);  
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -24,7 +28,7 @@
 }
 
 header {
-  background: linear-gradient(to bottom right, blue, rgb(0, 191, 255));
+  background: linear-gradient(to bottom right,rgb(0, 191, 255), white);  
   font-size: 1.1rem !important;
 }
 
