@@ -7,14 +7,23 @@ import Facebook from './Facebook';
 import CryptoExchange from './Exchanges/CryptoExchange';
 import Calendar from './Calendar/Calendar';
 
-const Main = () => (    
-    <Switch>     
-        <Route path='/news/:agency' component={News}/>      
-        <Route path='/calendar/:month' component={Calendar}/>
-        <Route path='/facebook' component={Facebook}/>
-        <Route path='/exchanges' component={CryptoExchange}/>
-        <Route path='/weather' component={Weather}/>           
-    </Switch>    
-)
 
-export default Main
+export default class Main extends React.Component{
+
+    constructor(props){
+      super(props);   
+      console.info(props);     
+    }
+
+    render(){
+       return( 
+        <Switch>     
+            <Route path='/news' component={News}/>      
+            <Route path='/calendar/:month' component={Calendar}/>
+            <Route path='/facebook' component={Facebook}/>
+            <Route path='/exchanges' component={CryptoExchange}/>
+            <Route path='/weather' component={Weather}/>           
+        </Switch>
+       )
+    }
+}    

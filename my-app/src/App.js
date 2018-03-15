@@ -5,15 +5,14 @@ import NavBarTop from './Navigation/NavBarTop.js';
 import NavBarBottom from './Navigation/NavBarBottom.js';
 
 class App extends React.Component {
-  render(){
-    let date = new Date().getMonth()+1;
+  render(){    
     return (
       <div className="container-fluid">               
-        <NavBarTop />
+        <NavBarTop agency="bbc-news" />
         
         <div className="w-100 margin-top-20"></div>
         
-        <Main />        
+        <Main agency="bbc-news" />        
         
         <div className="w-100 margin-top-20"></div>  
         

@@ -2,8 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 class NavBarTop extends React.Component {
+
+  constructor(props){
+    super(props);        
+    console.info(props);
+  }
+
   render(){
-    let date = new Date().getMonth()+1;
+    let date = new Date().getMonth()+1;    
     return (    
     <header>      
       <nav className="navbar navbar-expand-lg justify-content-center">
@@ -17,7 +23,7 @@ class NavBarTop extends React.Component {
             </Link>
             <ul className="navbar-nav">
               <li className="nav-item">
-                <Link className="nav-link" to="/news/bbc-news">News</Link>
+                <Link className="nav-link" to="/news">News</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to={"/calendar/"+date}>Calendar</Link>

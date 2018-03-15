@@ -1,26 +1,24 @@
 import React from 'react';
 
+const API = 'http://api.wunderground.com/api/5794dda6ffb50f2f/';
+
 export default class Weather extends React.Component{
 
     constructor(props){
       super(props);        
 
       this.state = { city: '', dataToday: [], dataForecast: [] };
-      this.refreshWidget = this.refreshWidget.bind(this);
+      this.getAPIData = this.getAPIData.bind(this);
       this.renderCards = this.renderCards.bind(this);
-      this.currentConditions = 'conditions';
-      this.forecast = 'forecast';
+      this.currentConditions = 'conditions';      
     }
     
-    refreshWidget(key){
-      let url = 'http://api.wunderground.com/api/5794dda6ffb50f2f/'+key+'/q/BG/Sofia.json';
+    getAPIData(key){
+      let url = API+key+'/q/BG/Sofia.json';
 
       fetch(url)
-      .then((response) => 
-        {          
-          return response.json();
-        })
-      .then((result) => {
+      .then(response => response.json())
+      .then(result => {
         if(key === 'conditions'){                  
           this.setState({
             city : result.current_observation.display_location,
@@ -37,22 +35,14 @@ export default class Weather extends React.Component{
     }
   
     componentDidMount(){          
-        this.refreshWidget(this.currentConditions);
-        this.refreshWidget(this.forecast);
-        setTimeout(() => {        
-          this.refreshWidget(this.currentConditions);
-          this.refreshWidget(this.forecast);
-        }, 60000);        
+        this.getAPIData(this.currentConditions);
+        this.getAPIData('forecast');    
     }
-  
-    componentWillUnmount() {
-  
-    }        
 
     renderCards(){
       let elements = [];
       if(this.state.dataForecast.length > 0){
-        this.state.dataForecast.forEach((item, index) => 
+        this.state.dataForecast.map((item, index) => 
         {
           elements.push(
             <div className="card">
@@ -68,7 +58,6 @@ export default class Weather extends React.Component{
           )
         });
       }
-
       return elements;
     }
    
@@ -94,6 +83,5 @@ export default class Weather extends React.Component{
           </div>          
         </div>
       )
-    }
-    
+    }    
   }

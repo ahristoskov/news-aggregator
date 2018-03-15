@@ -11,7 +11,7 @@ export default class Sources extends React.Component{
       super(props);        
 
       this.state = {data: [], newsSourceChanged : false};            
-      this.change = this.changeSource.bind(this);    
+      this.changeSource = this.changeSource.bind(this);    
     }
     
     componentDidMount(){          
@@ -26,7 +26,7 @@ export default class Sources extends React.Component{
     }
 
     changeSource(event){                    
-        history.replace(event.target.value);  
+        //history.replace(event.target.value);  
         this.props.callbackFromParent(event.target.value);                
     }
 
