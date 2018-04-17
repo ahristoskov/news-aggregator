@@ -1,13 +1,14 @@
 import React from 'react';
-
 import Main from './Navigation';
 import NavBarTop from './Navigation/NavBarTop.js';
 import NavBarBottom from './Navigation/NavBarBottom.js';
 
-class App extends React.Component {
-  render(){    
+class App extends React.Component {  
+  
+  render(){        
     return (
-      <div className="container-fluid">               
+      <div className="container-fluid"> 
+                    
         <NavBarTop />
         
         <div className="w-100 margin-top-20"></div>

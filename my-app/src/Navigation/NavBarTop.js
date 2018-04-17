@@ -40,7 +40,7 @@ export default class NavBarTop extends React.Component {
           </div>
         </div>
       </nav>        
-    </header>            
+    </header>        
   );
   }
 }

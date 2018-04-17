@@ -25,8 +25,7 @@ export default class Sources extends React.Component{
       .catch(err => console.error(this.props.url, err.toString()));
     }
 
-    changeSource(event){                    
-        //history.replace(event.target.value);  
+    changeSource(event){                                    
         this.props.callbackFromParent(event.target.value);                
     }
 

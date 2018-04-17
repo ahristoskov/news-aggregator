@@ -2,21 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { BrowserRouter } from 'react-router-dom';
 import registerServiceWorker from './registerServiceWorker';
-
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import genApp from './Reducers/reducers.js';
 import App from './App';
 import './App.css';
 
-let store = createStore(genApp);
-
-  ReactDOM.render(               
-      <Provider store={store}>   
-        <BrowserRouter>  
+const store = createStore(genApp);
+  ReactDOM.render(          
+    <BrowserRouter>
+      <Provider store={store}>       
         <App />
-        </BrowserRouter>
-      </Provider>,    
+      </Provider>
+    </BrowserRouter>,    
     document.getElementById('root')
   );
 
