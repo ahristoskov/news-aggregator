@@ -53,7 +53,7 @@ export default class News extends React.Component{
     let list = 0;
 
     agencies.map((item, index) => {                  
-        elements.push(<NewsSection agency={item.agency} agenciesList={this.state.agenciesList} />)
+        elements.push(<NewsSection agency={item.agency} agenciesList={this.state.agenciesList} />);
     })          
 
     return elements 

@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import Sources from './Sources';
 
 const API = 'https://newsapi.org/v2/';
