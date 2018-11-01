@@ -4,6 +4,7 @@ import Sources from './News/Sources';
 import NewsSection from './News/NewsSection';
 
 const API = 'http://localhost:3030/api/agencies';
+const agenciesAPI = 'https://newsapi.org/v2/sources?apiKey=397076914c2b49ba9d6ac7e0f42e0e4a';
 
 export default class News extends React.Component{
 
@@ -11,10 +12,12 @@ export default class News extends React.Component{
     super(props);        
     
     this.state = { 
-      data : []
+      data : [],
+      agenciesList: [],
     };
     this.fetchAPIData = this.fetchAPIData.bind(this);      
     this.renderNewsSections = this.renderNewsSections.bind(this);
+    this.getAgenciesList = this.getAgenciesList.bind(this);
   }
 
   fetchAPIData(){    
@@ -28,8 +31,20 @@ export default class News extends React.Component{
     .catch(err => console.error(this.state, err.toString()));     
   }  
 
+  getAgenciesList(){ 
+    fetch(agenciesAPI)
+    .then(response => response.json())
+    .then(result => {        
+        this.setState({            
+          agenciesList : result.sources
+        });                 
+    })
+    .catch(err => console.error(this.props.url, err.toString()));
+  }
+
   componentDidMount(){      
     this.fetchAPIData(); 
+    this.getAgenciesList();
   } 
 
   renderNewsSections(){
@@ -38,7 +53,7 @@ export default class News extends React.Component{
     let list = 0;
 
     agencies.map((item, index) => {                  
-        elements.push(<NewsSection agency={item.agency} />)
+        elements.push(<NewsSection agency={item.agency} agenciesList={this.state.agenciesList} />)
     })          
 
     return elements 

@@ -11,13 +11,13 @@ export default class NewsSection extends React.Component{
     super(props);        
     console.info("NewsSection Props", props);
     this.state = { 
-                   data : [],
-                   source : '',
-                   results : 0,
-                   newsSourceChanged : false,
-                   searchString : ''
-                 };
-    this.fetchAPIData = this.fetchAPIData.bind(this);  
+      data : [],                   
+      source : '',
+      results : 0,
+      newsSourceChanged : false,
+      searchString : ''
+    };
+    this.fetchAPIData = this.fetchAPIData.bind(this); 
     this.getAgencyFromSource = this.getAgencyFromSource.bind(this);  
     this.renderCards = this.renderCards.bind(this);
 
@@ -60,7 +60,7 @@ export default class NewsSection extends React.Component{
   }
 
   componentDidMount(){      
-    this.fetchAPIData('', false, '');        
+    this.fetchAPIData('', false, '');            
   } 
 
   getAgencyFromSource(newsSource){
@@ -111,7 +111,7 @@ export default class NewsSection extends React.Component{
         <h2> {this.state.source} - Top {this.state.results} results</h2>           
         <div className="form-row">
           <div className="col-md-10 col-sm-12">
-            <Sources callbackFromParent={this.getAgencyFromSource} src={this.props.agency} /> 
+            <Sources callbackFromParent={this.getAgencyFromSource} src={this.props.agency} agenciesList={this.props.agenciesList} /> 
           </div>
           <div className="col-md-2 col-sm-12">
             <div className="input-group">      
