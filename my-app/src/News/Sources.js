@@ -34,9 +34,7 @@ export default class Sources extends React.Component{
         this.state.data.map((item, index) => 
         {
             elements.push(
-                <option value={item.id} key={index}>                    
-                        {item.name}                   
-                </option>
+               item.id === this.props.src ? <option value={item.id} key={index} selected>{item.name}</option> : <option value={item.id} key={index}>{item.name}</option>
             )
         });
 

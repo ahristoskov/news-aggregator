@@ -86,6 +86,9 @@ export default class NewsSection extends React.Component{
                 {item.description}                            
               </p>
               <p className="card-text">
+                {item.content}
+              </p>
+              <p className="card-text">
                 {item.publishedAt}
               </p>
             </div>            
@@ -108,7 +111,7 @@ export default class NewsSection extends React.Component{
         <h2> {this.state.source} - Top {this.state.results} results</h2>           
         <div className="form-row">
           <div className="col-md-10 col-sm-12">
-            <Sources callbackFromParent={this.getAgencyFromSource} /> 
+            <Sources callbackFromParent={this.getAgencyFromSource} src={this.props.agency} /> 
           </div>
           <div className="col-md-2 col-sm-12">
             <div className="input-group">      
