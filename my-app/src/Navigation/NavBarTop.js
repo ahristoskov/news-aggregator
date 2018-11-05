@@ -19,12 +19,12 @@ export default class NavBarTop extends React.Component {
               <li className="nav-item">
                 <Link className="nav-link" to="/news">News</Link>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link" to={"/calendar/"+date}>Calendar</Link>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/facebook">Facebook</Link>
-              </li>
+              </li> */}
               <li className="nav-item">
                 <Link className="nav-link" to="/exchanges">Exchanges</Link>
               </li>

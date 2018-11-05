@@ -43,17 +43,17 @@ export default class News extends React.Component{
   }
 
   componentDidMount(){      
-    this.fetchAPIData(); 
+    //this.fetchAPIData(); 
     this.getAgenciesList();
   } 
 
   renderNewsSections(){
     let elements = [];
-    let agencies = this.state.data;
+    let agencies = ['bbc-news', 'abc-news', 'the-new-york-times', 'cnn']
     let list = 0;
-
+    console.log(this.state.data);
     agencies.map((item, index) => {                  
-        elements.push(<NewsSection agency={item.agency} agenciesList={this.state.agenciesList} />);
+        elements.push(<NewsSection agency={item} agenciesList={this.state.agenciesList} />);
     })          
 
     return elements 

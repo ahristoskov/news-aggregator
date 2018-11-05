@@ -85,9 +85,6 @@ export default class NewsSection extends React.Component{
                 {item.description}                            
               </p>
               <p className="card-text">
-                {item.content}
-              </p>
-              <p className="card-text">
                 {item.publishedAt}
               </p>
             </div>            
