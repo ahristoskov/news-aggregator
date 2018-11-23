@@ -1,8 +1,4 @@
 import React from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import createHistory from 'history/createBrowserHistory';
-
-const history = createHistory();
 
 export default class Sources extends React.Component{
 
